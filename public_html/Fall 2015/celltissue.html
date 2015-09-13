@@ -1,0 +1,1382 @@
+<html>
+    <head>
+        <title> BME CLASS SEARCH </title>
+        <script type = "text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type = "text/javascript">
+            function mysubmit(index){
+                focusA = document.getElementById('focusA').value;
+				term = document.getElementById('term').value;
+				host = "http://classsearch.bme.jhu.edu/"
+                if (focusA != "")
+                    window.location.assign(host + term +"/"+ focusA+".html");
+            }
+        </script>
+        <script>
+            function run(){
+            $(".clickable").click(function() {
+                $(this).next().children("td").toggle();
+            });
+            $(".collapsable").dblclick(function(){
+                $(this).toggle();
+            });
+            }
+        </script>
+        <style>
+            .even {background-color: LightGray;}
+            #results {align:center;}
+        </style>
+    </head>
+    <body onload="run();">
+            <div>
+            <br>
+            <h2 align="center"> BME CLASS SEARCH </h2>
+            <h3 align="center"> Fall 2015 - celltissue </h3>
+            <h3 align="center"> Last updated: Sun Mar 29 13:36:27 2015</h3>
+            <form align ="center" onclick = "return mysubmit();">
+                <select id="term">
+					<option value="Spring 2015">Spring 2015 </option>
+					<option value="Fall 2014">Fall 2014</option>
+                </select>
+                <select id="focusA" onclick="if ((this.selectedIndex) != 'undefined') mysubmit(this.selectedIndex)">
+                    <option value=""></option>
+                    <option value="instrumentation"> Instrumentation </option>
+                    <option value="systems"> Systems </option>
+                    <option value="computational"> Computational </option>
+                    <option value="imaging"> Imaging </option>
+                    <option value="celltissue"> Cell and Tissue </option>
+                </select>
+            </form>
+            </div>
+            <div>
+            <table width="90%" id="results" align="center">
+                <tbody>
+                <tr>
+                            <td><b>Class Number: Title</b></td>
+                            <td><b>Day-Times</b></td>
+                            <td><b>Status</b></td>
+                </tr>
+                <tr>
+                    <td colspan=3>
+                    <div style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;"></div>
+                    </td>
+                </tr>
+				<tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.510.311 (01)	Structure of Materials</td>
+	                    <td width="35%">MWF 10:00AM - 10:50AM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>J. Erlebacher</td>
+                                        <td>EN</td>
+                                        <td>3.00</td>
+                                        <td>EN Materials Science &amp; Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>30</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>First of the Introduction to Materials Science series, this course seeks to develop an understanding of the structure of materials starting at the atomic scale and building up to macroscopic structures. Topics include bonding, crystal structures, crystalline defects, symmetry and crystallography, microstructure, liquids and amorphous solids, diffraction, molecular solids and polymers, liquid crystals, amphiphilic materials, and colloids. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | MWF <br>        10:00 AM - 10:50 AM | Homewood Campus <br>  <br> <br>Pre-Requisites <br> <br>            <br>            ( ( AS.110.106[+] AND AS.110.107[+]) OR ( AS.110.108[+] AND AS.110.109[+] ) ) AND ( ( EN.510.101[+] ) OR ( AS.030.101[+] AND AS.030.102[+] ) ) AND ( ( AS.171.101[+] AND AS.171.102[+] ) OR ( AS.171.103[+] AND AS.171.104[+] ) ) AND EN.510.202[+] or another programming course or permission of instructor.<br>            <br>AS.110.106 Calculus I (For Biology and Social Sciences) <br> Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, introduction to differential equations, functions of several variables, linear systems, applications for systems of linear differential equations, probability distributions. Many applications to the biological and social sciences will be discussed.<br>AS.110.107 Calculus II (For Biological and Social Science) <br> Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, introduction to differential equations, functions of several variables, linear systems, and applications for systems of linear differential equations, probability distributions.<br>AS.110.108 Calculus I <br> Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, polar coordinates, parametric equations, Taylor's theorem and applications, infinite sequences and series.<br>AS.110.109 Calculus II (For Physical Sciences and Engineering) <br> Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, polar coordinates, parametric equations, Taylor's theorem and applications, infinite sequences and series.  Some applications to the physical sciences and engineering will be discussed, and the courses are designed to meet the needs of students in these disciplines.<br>EN.510.101 Introduction to Materials Chemistry <br> Basic principles of chemistry and how they apply to the behavior of materials in the solid state. The relationship between electronic structure, chemical bonding, and crystal structure is developed. Attention is given to characterization of atomic and molecular arrangements in crystalline and amorphous solids: metals, ceramics, semiconductors, and polymers (including proteins). Examples are drawn from industrial practice (including the environmental impact of chemical processes), from energy generation and storage (such as batteries and fuel cells), and from emerging technologies (such as biomaterials).  Students may receive credit for AS.030.103 or EN.510.101, but not both.<br>AS.030.101 Introductory Chemistry I <br> An introduction to the fundamental principles of chemistry. The main topics to be covered are atomic and molecular structure at the level of dot structures and VSEPR geometries, the periodic table, stoichiometry and the balancing of chemical equations, the gas laws, the law of mass action and chemical equilibrium, acids and bases, and elementary chemical thermodynamics. Switching sectons requires instructor's approval. Corequisite: AS.030.105<br>AS.030.102 Introductory Chemistry II <br> The fundamental principles of chemistry, including atomic and molecular structure, bonding, elementary thermodynamics, equilibrium, acids and bases, electrochemistry, kinetics, and transition metal chemistry are introduced in this course. To be taken with Introductory Chemistry Laboratory unless lab has been previously completed. Note: Students taking this course and the laboratory 030.105-106 may not take any other course in the summer sessions and should devote full time to these subjects. High school physics and calculus are strongly recommended as prerequisites. First and second terms must be taken in sequence.<br>AS.171.101 General Physics:Physical Science Major I <br> First semester of two-semester sequence.   In this term, the topics covered include the basic principles of classical mechanics and fluids as well as an introduction to wave motion.    Recommended Corequisites: (AS.173.111) AND (AS.110.106 or AS.110.108 or AS.110.113).<br>Midterm exams are given at 8am Fridays, so students must leave their schedules open at this time in order to be able to take these exams<br>AS.171.102 General Physics: Physical Science Major II <br> Second semester of two-semester sequence.   In this term, the topics covered include wave motion, electricity and magnetism, optics, and modern physics.   <br>Recommended Corequisites: (AS.173.112) AND Calculus (AS.110.107 or AS.110.109 or AS.110.113).   <br>Midterm exams are given at 8am Thursdays, so students must leave their schedules open at this time in order to be able to take these exams<br>AS.171.103 General Physics I for Biological Science Majors <br> First-semester of two-semester sequence in calculus-based general physics, tailored to students majoring in one of the biological sciences.   In this term, the topics covered include the basic principles of classical mechanics and fluids as well as an introduction to wave motion.    Recommended Corequisites: (AS.173.111) AND (AS.110.106 or AS.110.108 or AS.110.113).<br>Midterm exams are given at 8am Tuesdays, so students must leave their schedules open at this time in order to be able to take these exams<br>AS.171.104 General Physics/Biology Majors II <br> This two-semester sequence is designed to present a standard calculus-based physics preparation tailored to students majoring in one of the biological sciences. Topics in electricity & magnetism, optics, and modern physics will be covered in this semester. Midterm exams for every section are given during the 8 AM section time!  Accordingly, students registering for sections at times other than 8 AM must retain availability for 8 AM sections as needed.  Recommended Course Background: C- or better in AS.171.101 or AS.171.103; Corequisite: AS.110.109, AS 173.112.<br>EN.510.202 Computation and Programming for Materials Scientists and Engineers <br> This course will introduce students to the basics of programming in the MATLAB environment.  Students will build skills in algorithmic problem solving by programming assignments regarding a range of biological and non-biological materials systems.  Students will learn to write function definitions and deploy basic operations of selection and iteration as well as MATLAB specific vectorization methods and the construction of graphical user interfaces. Applications may include materials structure, phase equilibrium, propagating reactions, and other relevant scientific and engineering applications.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.510.312 (01)	Thermodynamics/Materials</td>
+	                    <td width="35%">TTh 10:30AM - 11:45AM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>M. Ulmschneider</td>
+                                        <td>EN</td>
+                                        <td>3.00</td>
+                                        <td>EN Materials Science &amp; Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>30</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Second of the Introduction to Materials Science series, this course examines the principles of thermodynamics as they apply to materials. Topics include fundamental principles of thermodynamics, equilibrium in homogeneous and heterogeneous systems, thermodynamics of multicomponent systems, phase diagrams, thermodynamics of defects, and elementary statistical thermodynamics. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | TTh <br>        10:30 AM - 11:45 AM | Homewood Campus <br>  <br> <br>Pre-Requisites <br> <br>            <br>            ( ( AS.110.106[+] AND AS.110.107[+] ) OR ( AS.110.108[+] AND AS.110.109[+]) ) AND ( ( EN.510.101[+] ) OR ( AS.030.101[+] AND AS.030.102[+] ) ) AND ( ( AS.171.101[+] AND AS.171.102[+] ) OR ( AS.171.103[+] AND AS.171.104[+] ) ) AND EN.510.202[+]<br>AS.110.106 Calculus I (For Biology and Social Sciences) <br> Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, introduction to differential equations, functions of several variables, linear systems, applications for systems of linear differential equations, probability distributions. Many applications to the biological and social sciences will be discussed.<br>AS.110.107 Calculus II (For Biological and Social Science) <br> Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, introduction to differential equations, functions of several variables, linear systems, and applications for systems of linear differential equations, probability distributions.<br>AS.110.108 Calculus I <br> Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, polar coordinates, parametric equations, Taylor's theorem and applications, infinite sequences and series.<br>AS.110.109 Calculus II (For Physical Sciences and Engineering) <br> Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, polar coordinates, parametric equations, Taylor's theorem and applications, infinite sequences and series.  Some applications to the physical sciences and engineering will be discussed, and the courses are designed to meet the needs of students in these disciplines.<br>EN.510.101 Introduction to Materials Chemistry <br> Basic principles of chemistry and how they apply to the behavior of materials in the solid state. The relationship between electronic structure, chemical bonding, and crystal structure is developed. Attention is given to characterization of atomic and molecular arrangements in crystalline and amorphous solids: metals, ceramics, semiconductors, and polymers (including proteins). Examples are drawn from industrial practice (including the environmental impact of chemical processes), from energy generation and storage (such as batteries and fuel cells), and from emerging technologies (such as biomaterials).  Students may receive credit for AS.030.103 or EN.510.101, but not both.<br>AS.030.101 Introductory Chemistry I <br> An introduction to the fundamental principles of chemistry. The main topics to be covered are atomic and molecular structure at the level of dot structures and VSEPR geometries, the periodic table, stoichiometry and the balancing of chemical equations, the gas laws, the law of mass action and chemical equilibrium, acids and bases, and elementary chemical thermodynamics. Switching sectons requires instructor's approval. Corequisite: AS.030.105<br>AS.030.102 Introductory Chemistry II <br> The fundamental principles of chemistry, including atomic and molecular structure, bonding, elementary thermodynamics, equilibrium, acids and bases, electrochemistry, kinetics, and transition metal chemistry are introduced in this course. To be taken with Introductory Chemistry Laboratory unless lab has been previously completed. Note: Students taking this course and the laboratory 030.105-106 may not take any other course in the summer sessions and should devote full time to these subjects. High school physics and calculus are strongly recommended as prerequisites. First and second terms must be taken in sequence.<br>AS.171.101 General Physics:Physical Science Major I <br> First semester of two-semester sequence.   In this term, the topics covered include the basic principles of classical mechanics and fluids as well as an introduction to wave motion.    Recommended Corequisites: (AS.173.111) AND (AS.110.106 or AS.110.108 or AS.110.113).<br>Midterm exams are given at 8am Fridays, so students must leave their schedules open at this time in order to be able to take these exams<br>AS.171.102 General Physics: Physical Science Major II <br> Second semester of two-semester sequence.   In this term, the topics covered include wave motion, electricity and magnetism, optics, and modern physics.   <br>Recommended Corequisites: (AS.173.112) AND Calculus (AS.110.107 or AS.110.109 or AS.110.113).   <br>Midterm exams are given at 8am Thursdays, so students must leave their schedules open at this time in order to be able to take these exams<br>AS.171.103 General Physics I for Biological Science Majors <br> First-semester of two-semester sequence in calculus-based general physics, tailored to students majoring in one of the biological sciences.   In this term, the topics covered include the basic principles of classical mechanics and fluids as well as an introduction to wave motion.    Recommended Corequisites: (AS.173.111) AND (AS.110.106 or AS.110.108 or AS.110.113).<br>Midterm exams are given at 8am Tuesdays, so students must leave their schedules open at this time in order to be able to take these exams<br>AS.171.104 General Physics/Biology Majors II <br> This two-semester sequence is designed to present a standard calculus-based physics preparation tailored to students majoring in one of the biological sciences. Topics in electricity & magnetism, optics, and modern physics will be covered in this semester. Midterm exams for every section are given during the 8 AM section time!  Accordingly, students registering for sections at times other than 8 AM must retain availability for 8 AM sections as needed.  Recommended Course Background: C- or better in AS.171.101 or AS.171.103; Corequisite: AS.110.109, AS 173.112.<br>EN.510.202 Computation and Programming for Materials Scientists and Engineers <br> This course will introduce students to the basics of programming in the MATLAB environment.  Students will build skills in algorithmic problem solving by programming assignments regarding a range of biological and non-biological materials systems.  Students will learn to write function definitions and deploy basic operations of selection and iteration as well as MATLAB specific vectorization methods and the construction of graphical user interfaces. Applications may include materials structure, phase equilibrium, propagating reactions, and other relevant scientific and engineering applications.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.510.316 (01)	Biomaterials I</td>
+	                    <td width="35%">MWF 9:00AM - 9:50AM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>H. Mao</td>
+                                        <td>EN</td>
+                                        <td>3.00</td>
+                                        <td>EN Materials Science &amp; Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>92</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Sixth of the Introduction to Materials Science series, this course offers an overview of principles and properties of biomedical materials.  Topics include properties of materials used in medicine, synthesis and properties of polymeric materials, polymeric biomaterials, natural and recombinant biomaterials, biodegradable materials, hydrogels, stimuli-sensitive materials, and characterizations of biomaterials. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | MWF <br>        09:00 AM - 09:50 AM | Homewood Campus <br>  <br> <br>Pre-Requisites<br>AS.030.205[+] AND EN.510.202[+] or another programming coruse, or permission of instructor.<br>            <br>AS.030.205 Introductory Organic Chemistry I <br> The fundamental chemistry of the compounds of carbon. Methods of structure determination and synthesis. The mechanisms of typical organic reactions and the relations between physical and chemical properties and structures.<br>EN.510.202 Computation and Programming for Materials Scientists and Engineers <br> This course will introduce students to the basics of programming in the MATLAB environment.  Students will build skills in algorithmic problem solving by programming assignments regarding a range of biological and non-biological materials systems.  Students will learn to write function definitions and deploy basic operations of selection and iteration as well as MATLAB specific vectorization methods and the construction of graphical user interfaces. Applications may include materials structure, phase equilibrium, propagating reactions, and other relevant scientific and engineering applications.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.510.403 (01)	Materials Characterization</td>
+	                    <td width="35%">TTh 9:00AM - 10:15AM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>P. Mcguiggan</td>
+                                        <td>N</td>
+                                        <td>3.00</td>
+                                        <td>EN Materials Science &amp; Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>30</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>This course will describe a variety of techniques used to characterize the structure and composition of engineering materials, including metals, ceramics, polymers, composites and semiconductors. The emphasis will be on microstructural characterization techniques, including optical and electron microscopy, X-ray diffraction, and acoustic microscopy. Surface analytical techniques, including Auger electron spectroscopy, secondary ion mass spectroscopy, X-ray photoelectron spectroscopy, and Rutherford backscattering spectroscopy. Real-world examples of materials characterization will be presented throughout the course, including characterization of thin films, surfaces, interfaces, and single crystals. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | TTh <br>        09:00 AM - 10:15 AM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.510.426 (01)	Biomolecular Materials I - Soluble Proteins and Amphiphiles</td>
+	                    <td width="35%">MF 1:30PM - 2:45PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>K. Hristova</td>
+                                        <td>EN</td>
+                                        <td>3.00</td>
+                                        <td>EN Materials Science &amp; Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>19</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>This course will examine the fundamental structure, interactions, and function relationship for biological macromolecules. The course will emphasize experimental methods and experimental design, and the physics behind human disease. Topics will include micellization, protein folding and misfolding, and macromolecular interactions. Recommended Course Background: EN.580.221
+Co-listed with EN.510.621 </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | MF <br>        01:30 PM - 02:45 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.510.443 (01)	Chemistry and Physics of Polymers</td>
+	                    <td width="35%">TTh 12:00PM - 1:15PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>H. Katz</td>
+                                        <td>EN</td>
+                                        <td>3.00</td>
+                                        <td>EN Materials Science &amp; Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>15</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>The course will describe and evaluate the synthetic routes, including condensation and addition polymerization, to macromolecules with varied constituents and properties.  Factors that affect the efficiencies of the syntheses will be discussed.  Properties of polymers that lead to technological applications will be covered, and the physical basis for these properties will be derived.  Connections to mechanical, electronic, photonic, and biological applications will be made.  Also listed as EN.510.643. Recommended Course Background: Organic Chemistry I and one semester of thermodynamics. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | TTh <br>        12:00 PM - 01:15 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.530.426 (01)	Biofluid Mechanics</td>
+	                    <td width="35%">TTh 1:30PM - 3:00PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>R. Mittal</td>
+                                        <td>E</td>
+                                        <td>3.00</td>
+                                        <td>EN Mechanical Engineering, EN Biomedical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>25</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Course will cover selected topics from physiological fluid dynamics, including respiratory flow patterns, blood flow and pulse propagation, aerodynamics of phonation and speech, rheology of blood flow in the microcirculation, aquatic animal propulsion, and animal flight. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | TTh <br>        01:30 PM - 03:00 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.530.445 (01)	Introduction to Biomechanics</td>
+	                    <td width="35%">MWF 9:00AM - 9:50AM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>S. Belkoff</td>
+                                        <td>E</td>
+                                        <td>3.00</td>
+                                        <td>EN Mechanical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>25</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>An introduction to the mechanics of biological materials and systems. Both soft tissue such as muscle and hard tissue such as bone will be studied as will the way they interact in physiological functions. Special emphasis will be given to orthopedic biomechanics. Recommended Course Background: EN.530.215/EN.530.216 and Lab or equivalent. If you have not taken this course or an equivalent, please contact the instructor before registering to ensure you have the appropriate background knowledge to succeed in this course. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | MWF <br>        09:00 AM - 09:50 AM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.540.301 (01)	Kinetic Processes</td>
+	                    <td width="35%">MW 3:00PM - 4:15PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>H. Cui</td>
+                                        <td>E</td>
+                                        <td>3.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>19</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Review of numerical methods applied to kinetic phenomena and reactor design in chemical and biological processes. Homogeneous kinetics and interpretation of reaction rate data. Batch, plug flow, and stirred tank reactor analyses, including reactors in parallel and in series. Selectivity and optimization considerations in multiple reaction systems. Non isothermal reactors. Elements of heterogeneous kinetics, including adsorption isotherms and heterogeneous catalysis. Coupled transport and chemical/biological reaction rates. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | MW <br>        03:00 PM - 04:15 PM | Homewood Campus <br>  <br> <br>Pre-Requisites<br>EN.540.203[+] AND EN.540.303[+]<br>EN.540.203 Engineering Thermodynamics <br> Formulation and solution of material, energy, and entropy balances with an emphasis on open systems. A systematic problem-solving approach is developed for chemical and biomolecular process-related systems. Extensive use is made of classical thermodynamic relationships and constitutive equations for one and two component systems. Applications include the analysis and design of engines, refrigerators, heat pumps, compressors, and turbines.<br>EN.540.303 Transport Phenomena I <br> Molecular mechanisms of momentum transport (viscous flow), energy transport (heat conduction), and mass transport (diffusion). Isothermal equations of change (continuity, motion, and energy). The development of the Navier Stokes equation. The development of non isothermal and multi component equations of change for heat and mass transfer. Exact solutions to steady state, isothermal unidirectional flow problems, to steady state heat and mass transfer problems. The analogies between heat, mass, and momentum transfer are emphasized throughout the course. Recommended Corequisite: AS.110.302, Introduction to the field of transport phenomena.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.540.303 (01)	Transport Phenomena I</td>
+	                    <td width="35%">TTh 1:30PM - 2:45PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>J. Frechette</td>
+                                        <td>EN</td>
+                                        <td>3.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>40</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Molecular mechanisms of momentum transport (viscous flow), energy transport (heat conduction), and mass transport (diffusion). Isothermal equations of change (continuity, motion, and energy). The development of the Navier Stokes equation. The development of non isothermal and multi component equations of change for heat and mass transfer. Exact solutions to steady state, isothermal unidirectional flow problems, to steady state heat and mass transfer problems. The analogies between heat, mass, and momentum transfer are emphasized throughout the course. Recommended Corequisite: AS.110.302, Introduction to the field of transport phenomena. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | TTh <br>        01:30 PM - 02:45 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.540.304 (01)	Transport Phenomena II</td>
+	                    <td width="35%">TTh 12:00PM - 1:15PM, W 9:00AM - 9:50AM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>Z. Gagnon</td>
+                                        <td>E</td>
+                                        <td>4.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>100</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Dimensional analysis and dimensionless groups. Laminar boundary layers, introduction to turbulent flow. Definition of the friction factor. Macroscopic mass, momentum and mechanical energy balances (Bernouillis equation). Metering of fluids. Convective heat and mass transfer. Heat and mass transfer in boundary layers. Correlations for convective heat and mass transfer. Boiling and condensation. Interphase mass transfer. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Special Notes<br>9am Wednesday section meeting is mandatory.<br>Schedule<br> 08-27-2015 to 12-04-2015 | TTh <br>        12:00 PM - 01:15 PM | Homewood Campus <br> <br> 08-27-2015 to 12-04-2015 | W <br>        09:00 AM - 09:50 AM | Homewood Campus <br>  <br> <br>Pre-Requisites <br> <br>            <br>            Prerequisite: EN.540.303[+].<br>            <br>EN.540.303 Transport Phenomena I <br> Molecular mechanisms of momentum transport (viscous flow), energy transport (heat conduction), and mass transport (diffusion). Isothermal equations of change (continuity, motion, and energy). The development of the Navier Stokes equation. The development of non isothermal and multi component equations of change for heat and mass transfer. Exact solutions to steady state, isothermal unidirectional flow problems, to steady state heat and mass transfer problems. The analogies between heat, mass, and momentum transfer are emphasized throughout the course. Recommended Corequisite: AS.110.302, Introduction to the field of transport phenomena.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.540.400 (01)	Project in Design: Pharmacokinetics</td>
+	                    <td width="35%">MW 4:30PM - 5:45PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>M. Donohue</td>
+                                        <td>E</td>
+                                        <td>3.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>This design project will be to develop a chemical process model of the human body that can be used to understand the temporal distribution, spatial distribution and bioavailability of pharmaceutical drugs.  The course (and software to be developed) will cover the spectrum of factors affecting pharmaceutical bioavailability including drug formulation, mode of dosing and dosing rate, metabolism and metabolic cascades, storage in fatty tissues, and diffusional limitations (such as in crossing the blood-brain barrier or diffusional differences between normal and cancerous cells).  The goal is to develop a process model of the human body that will predict pharmaceutical bioavailability as a function of time and organ (or cell) type that will work for a wide variety of pharmaceuticals including small molecules, biologics, and chemotherapy agents. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Special Notes<br>Will meet in Maryland 117.<br>Schedule<br> 08-27-2015 to 12-04-2015 | MW <br>        04:30 PM - 05:45 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.540.400 (02)	Project in Design: Pharmacokinetics</td>
+	                    <td width="35%">MW 4:30PM - 5:45PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>M. Donohue</td>
+                                        <td>E</td>
+                                        <td>3.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>This design project will be to develop a chemical process model of the human body that can be used to understand the temporal distribution, spatial distribution and bioavailability of pharmaceutical drugs.  The course (and software to be developed) will cover the spectrum of factors affecting pharmaceutical bioavailability including drug formulation, mode of dosing and dosing rate, metabolism and metabolic cascades, storage in fatty tissues, and diffusional limitations (such as in crossing the blood-brain barrier or diffusional differences between normal and cancerous cells).  The goal is to develop a process model of the human body that will predict pharmaceutical bioavailability as a function of time and organ (or cell) type that will work for a wide variety of pharmaceuticals including small molecules, biologics, and chemotherapy agents. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Special Notes<br>Will meet in Maryland 117.<br>Schedule<br> 08-27-2015 to 12-04-2015 | MW <br>        04:30 PM - 05:45 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.540.402 (01)	Metabolic Systems Biotechnology</td>
+	                    <td width="35%">F 1:30PM - 4:15PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>M. Betenbaugh</td>
+                                        <td>E</td>
+                                        <td>3.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>The aim of this course is to provide a fundamental understanding of the quantitative principles and methodologies of systems biology and biochemical engineering of metabolism. This includes concepts of  cellular growth, cellular stoichiometric models,  metabolic networks, metabolite fluxes, and genome-scale metabolic models. Quantitative methods and systems biology approaches for metabolic flux analysis and metabolic control theory will be included as well as an analysis of biochemical systems and bioreactors including a consideration of mass transport processes. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | F <br>        01:30 PM - 04:15 PM | Homewood Campus <br>  <br> <br>Pre-Requisites<br>AS.020.306[+] OR ( EN.580.440[+] or EN.580.441[+] )<br>            <br>AS.020.306 Cell Biology <br> How the molecules of living systems are organized into organelles, cells, tissues, and organisms will be explored, as well as how the activities of all of these are orchestrated and regulated to produce lifea phenomenon greater than the sum of its parts. Considerable emphasis is placed on experimental approaches to answering these questions. Topics covered include biological membranes, cytoskeletal elements, cell locomotion, membrane and protein traffic, the nucleus, second messengers, signal transduction, cell growth, the cell cycle, the extracellular matrix, cell contacts and adhesion, intercellular communication, epithelial structure and function, and the cell biology of early development and organ function. Sophomores, juniors, and seniors only.<br>Recommended Course Background: (AS.020.151 or AS.020.305) or equivalent knowledge of biomolecules.<br>EN.580.440 Cell & Tissue Engineer <br> Lectures provide an overview of molecular biology fundamentals, an extensivereview on extracellular matrix and basics of receptors, followed by topics on cell-cell and cell-matrix interactions at both the theoretical and experimental levels. Subsequent lectures will cover the effects of physical (shear, stress, strain), chemical (cytokins, growth factors), and electrical stimuli on cell function, emphasizing topics on gene regulation and signal transduction processes. Material on cell-cycle, apoptosis, metabolic engineering and gene therapy will also be incorporated into the course. Junior, Senior, Graduate students only. Recommended Course Background: EN.580.421-EN.580.422<br>EN.580.441 Cellular Engineering <br> This course focuses on principles and applications in cell engineering.  Class lectures include an overview of molecular biology fundamentals, protein/ligand binding, receptor/ligand trafficking, cell-cell interactions, cell-matrix interactions, and cell adhesion and migration at both theoretical and experimental levels.  Lectures will cover the effects of physical (e.g. shear stress, strain), chemical (e.g. cytokines, growth factors) and electrical stimuli on cell function, emphasizing topics on gene regulation and signal transduction processes.  Furthermore, topics in metabolic engineering, enzyme evolution, polymeric biomaterials, and drug and gene delivery will be discussed.  This course is intended as Part 1 of a two-semester sequence recommended for students in the Cell and Tissue Engineering focus area. Recommended Course Background: EN.580.221 or AS.020.305 and AS.020.306 or equivalent and AS.030.205<br>Meets with EN.580.641</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.540.409 (01)	Dynamic Modeling and Control</td>
+	                    <td width="35%">MWF 10:00AM - 10:50AM, M 1:00PM - 1:50PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>A. Goffin</td>
+                                        <td>EQ</td>
+                                        <td>4.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>19</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Introduction to modeling, dynamics, and control. Unsteady state analysis of biomolecular and chemical process control systems.  State space and Laplace transform techniques, block diagram algebra, and transfer functions.  Feedback and feedforward control. Frequency response and stability analysis.  Model construction for biomolecular and cellular systems including pharmacokinetic modeling, biomolecular modeling using the central dogma of biology/control of gene expression, large scale biosimulation. Introduction to nonlinear dynamics. Recommended Corequisites: AS.110.302, EN.540.203, EN.540.301, EN.540.303, AS.020.305 and AS.020.306 or equivalent. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | MWF <br>        10:00 AM - 10:50 AM | Homewood Campus <br> <br> 08-27-2015 to 12-04-2015 | M <br>        01:00 PM - 01:50 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.540.409 (02)	Dynamic Modeling and Control</td>
+	                    <td width="35%">MWF 10:00AM - 10:50AM, T 12:00PM - 12:50PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>A. Goffin</td>
+                                        <td>EQ</td>
+                                        <td>4.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>19</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Introduction to modeling, dynamics, and control. Unsteady state analysis of biomolecular and chemical process control systems.  State space and Laplace transform techniques, block diagram algebra, and transfer functions.  Feedback and feedforward control. Frequency response and stability analysis.  Model construction for biomolecular and cellular systems including pharmacokinetic modeling, biomolecular modeling using the central dogma of biology/control of gene expression, large scale biosimulation. Introduction to nonlinear dynamics. Recommended Corequisites: AS.110.302, EN.540.203, EN.540.301, EN.540.303, AS.020.305 and AS.020.306 or equivalent. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | MWF <br>        10:00 AM - 10:50 AM | Homewood Campus <br> <br> 08-27-2015 to 12-04-2015 | T <br>        12:00 PM - 12:50 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.540.409 (03)	Dynamic Modeling and Control</td>
+	                    <td width="35%">MWF 10:00AM - 10:50AM, W 1:00PM - 1:50PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>A. Goffin</td>
+                                        <td>EQ</td>
+                                        <td>4.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>19</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Introduction to modeling, dynamics, and control. Unsteady state analysis of biomolecular and chemical process control systems.  State space and Laplace transform techniques, block diagram algebra, and transfer functions.  Feedback and feedforward control. Frequency response and stability analysis.  Model construction for biomolecular and cellular systems including pharmacokinetic modeling, biomolecular modeling using the central dogma of biology/control of gene expression, large scale biosimulation. Introduction to nonlinear dynamics. Recommended Corequisites: AS.110.302, EN.540.203, EN.540.301, EN.540.303, AS.020.305 and AS.020.306 or equivalent. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | MWF <br>        10:00 AM - 10:50 AM | Homewood Campus <br> <br> 08-27-2015 to 12-04-2015 | W <br>        01:00 PM - 01:50 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.540.409 (04)	Dynamic Modeling and Control</td>
+	                    <td width="35%">MWF 10:00AM - 10:50AM, T 1:00PM - 1:50PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>A. Goffin</td>
+                                        <td>EQ</td>
+                                        <td>4.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>19</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Introduction to modeling, dynamics, and control. Unsteady state analysis of biomolecular and chemical process control systems.  State space and Laplace transform techniques, block diagram algebra, and transfer functions.  Feedback and feedforward control. Frequency response and stability analysis.  Model construction for biomolecular and cellular systems including pharmacokinetic modeling, biomolecular modeling using the central dogma of biology/control of gene expression, large scale biosimulation. Introduction to nonlinear dynamics. Recommended Corequisites: AS.110.302, EN.540.203, EN.540.301, EN.540.303, AS.020.305 and AS.020.306 or equivalent. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | MWF <br>        10:00 AM - 10:50 AM | Homewood Campus <br> <br> 08-27-2015 to 12-04-2015 | T <br>        01:00 PM - 01:50 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.540.422 (01)	Introduction to Polymeric Materials</td>
+	                    <td width="35%">M 6:00PM - 8:30PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>H. Cui</td>
+                                        <td>E</td>
+                                        <td>3.00</td>
+                                        <td>EN Chemical &amp; Biomolecular Engineering     </td>
+                                        <td>Homewood Campus</td>
+										<td>19</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Polymeric materials are ubiquitous in our society from Nature-made proteins and polysaccharides to synthetic plastics and fibers.  Their applications range from day-to-day consumables to high performance materials used in critically demanding areas, such as aviation, aerospace and medical devices.  The objective of this course is to provide an introductory overview on the field of polymer science and engineering.  Students will learn some basic concepts in polymer synthesis, characterization, and processing.  With the basic concepts established, industrial applications of polymeric materials will be discussed in two categories: structural polymers and functional polymers.  Structural polymers, including plastics, fibers, rubbers, coatings, adhesives, and composites, will be discussed in terms of their structure, processing, and property relationship with a flavor of industrial relevant products and applications.  Future trends in developing environmentally friendly polymers from renewable resources (green polymer chemistry) will also be covered.  Lectures on functional polymers will be focused on their unique properties that are enabled by rational molecular design, controlled synthesis and processing (e.g. supramolecular assembly, and microfabrication).   This class of specialty materials can find their use in high performance photovoltaics, batteries, membranes, and composites, and can also serve as smart materials for use in coatings, sensors, medical devices, and biomimicry. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | M <br>        06:00 PM - 08:30 PM | Homewood Campus <br>  <br> <br>Pre-Requisites<br>AS.030.205[+] or by instructor permission.<br>            <br>AS.030.205 Introductory Organic Chemistry I <br> The fundamental chemistry of the compounds of carbon. Methods of structure determination and synthesis. The mechanisms of typical organic reactions and the relations between physical and chemical properties and structures.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.550.391 (01)	Dynamical Systems</td>
+	                    <td width="35%">MWF 11:00AM - 11:50AM, Th 12:00PM - 12:50PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>Staff</td>
+                                        <td>EQ</td>
+                                        <td>4.00</td>
+                                        <td>EN Applied Mathematics &amp; Statistics</td>
+                                        <td>Homewood Campus</td>
+										<td>24</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Mathematical concepts and methods for describing and analyzing linear and nonlinear systems that evolve over time. Topics include boundedness, stability of fixed points and attractors, feedback, optimality, Liapounov functions, bifurcation, chaos, and catastrophes. Examples drawn from population growth, economic behavior, physical and engineering systems. The main mathematical tools are linear algebra and basic differential equations. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | MWF <br>        11:00 AM - 11:50 AM | Homewood Campus <br> <br> 08-27-2015 to 12-04-2015 | Th <br>        12:00 PM - 12:50 PM | Homewood Campus <br>  <br> <br>Pre-Requisites <br> <br>            <br>            Prerequisite: EN.550.291[+] OR AS.110.201[+] OR AS.110.211[+]<br>EN.550.291 Linear Algebra and Differential Equations <br> An introduction to the basic concepts of linear algebra, matrix theory, and differential equations that are used widely in modern engineering and science. Intended for engineering and science majors whose program does not permit taking both AS.110.201 and AS.110.302.<br>AS.110.201 Linear Algebra <br> Vector spaces, matrices, and linear transformations. Solutions of systems of linear equations. Eigenvalues, eigenvectors, and diagonalization of matrices. Applications to differential equations.<br>AS.110.211 Honors Multivariable Calculus <br> This course includes the material in AS.110.202 with some additional applications and theory. Recommended for mathematically able students majoring in physical science, engineering, or especially mathematics. AS.110.211-AS.110.212 used to be an integrated yearlong course, but now the two are independent courses and can be taken in either order.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.580.420 (01)	Build-a-Genome</td>
+	                    <td width="35%">MWF 8:30AM - 9:50AM</td>
+	                    <td>Approval Required</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>J. Bader,  K. Zeller</td>
+                                        <td>EN</td>
+                                        <td>4.00</td>
+                                        <td>EN Biomedical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Must understand fundamentals of DNA structure, DNA electrophoresis and analysis, Polymerase Chain Reaction (PCR) and must be either a) Experienced with molecular biology lab work or b) Adept at programming with a biological twist. In this combination lecture/laboratory 'Synthetic Biology' course students will learn how to make DNA building blocks used in an int'l. project to build the world's first synthetic eukaryotic genome, Saccharomyces cerevisiae v. 2.0. Please study the wiki www.syntheticyeast.org for more details about the project. Following a biotechnology boot-camp, students will have 24/7 access to computational and wet-lab resources and will be expected to spend 15-20 hours per week on this course. Advanced students will be expected to contribute to the computational and biotech infrastructure. Successful completion of this course provides 3 credit hours toward the supervised research requirement for Molecular and Cellular Biology majors, or 2 credit hours toward the upper level elective requirement for Biology or Molecular and Cellular Biology majors. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | MWF <br>        08:30 AM - 09:50 AM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.580.441 (01)	Cellular Engineering</td>
+	                    <td width="35%">TTh 3:00PM - 4:15PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>J. Green,  K. Yarema</td>
+                                        <td>E</td>
+                                        <td>3.00</td>
+                                        <td>EN Biomedical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>40</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>This course focuses on principles and applications in cell engineering.  Class lectures include an overview of molecular biology fundamentals, protein/ligand binding, receptor/ligand trafficking, cell-cell interactions, cell-matrix interactions, and cell adhesion and migration at both theoretical and experimental levels.  Lectures will cover the effects of physical (e.g. shear stress, strain), chemical (e.g. cytokines, growth factors) and electrical stimuli on cell function, emphasizing topics on gene regulation and signal transduction processes.  Furthermore, topics in metabolic engineering, enzyme evolution, polymeric biomaterials, and drug and gene delivery will be discussed.  This course is intended as Part 1 of a two-semester sequence recommended for students in the Cell and Tissue Engineering focus area. Recommended Course Background: EN.580.221 or AS.020.305 and AS.020.306 or equivalent and AS.030.205
+Meets with EN.580.641 </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Registration Restrictions<br>Prereqs: 580.221 or 020.305 and 020.306 (or equivalent) and 030.205<br>Schedule <br> <br>        08-27-2015 to 12-04-2015 | TTh <br>        03:00 PM - 04:15 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.580.451 (01)	Cell and Tissue Engineering Lab</td>
+	                    <td width="35%">MWF 11:00AM - 12:50PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>E. Haase</td>
+                                        <td>EN</td>
+                                        <td>3.00</td>
+                                        <td>EN Biomedical Engineering, EN Mechanical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Cell and tissue engineering is a field that relies heavily on experimental techniques. This laboratory course will consist of three six experiments that will provide students with valuable hands-on experience in cell and tissue engineering. Students will learn basic cell culture procedures and specialized techniques related to faculty expertise in cell engineering, microfluidics, gene therapy, microfabrication and cell encapsulation. Experiments include the basics of cell culture techniques, gene transfection and metabolic engineering, basics of cell-substrate interactions I, cell-substrate interactions II, and cell encapsulation and gel contraction. Co-listed with EN.530.451. Senior and Graduate students only; others, instructor permission required. Fall semester only. Lab Fee: $100 </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | MWF <br>        11:00 AM - 12:50 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.580.451 (02)	Cell and Tissue Engineering Lab</td>
+	                    <td width="35%">MWF 1:00PM - 2:50PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>E. Haase</td>
+                                        <td>EN</td>
+                                        <td>3.00</td>
+                                        <td>EN Biomedical Engineering, EN Mechanical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Cell and tissue engineering is a field that relies heavily on experimental techniques. This laboratory course will consist of three six experiments that will provide students with valuable hands-on experience in cell and tissue engineering. Students will learn basic cell culture procedures and specialized techniques related to faculty expertise in cell engineering, microfluidics, gene therapy, microfabrication and cell encapsulation. Experiments include the basics of cell culture techniques, gene transfection and metabolic engineering, basics of cell-substrate interactions I, cell-substrate interactions II, and cell encapsulation and gel contraction. Co-listed with EN.530.451. Senior and Graduate students only; others, instructor permission required. Fall semester only. Lab Fee: $100 </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | MWF <br>        01:00 PM - 02:50 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.580.492 (01)	Build-a-Genome Mentor</td>
+	                    <td width="35%">MWF 8:30AM - 9:50AM</td>
+	                    <td>Approval Required</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>J. Bader,  K. Zeller</td>
+                                        <td>EN</td>
+                                        <td>4.00</td>
+                                        <td>EN Biomedical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>In addition to producing and sequencing DNA segments like regular B-a-G students, mentors will help prepare and distribute reagents, and maintain a Moddle site to track student reagent use and productivity. Mentors will also be expected to mentor specific students who are learning new techniques for the first time, contribute to the computational and biotech infrastructure associated with Build-a-Genome, and pursue at least one independent research project. Successful completion of this course provides 3 credit hours toward the supervised research requirement for Molecular and Cellular Biology majors. 
+Co-listed AS.020.451
+Permission Required. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | MWF <br>        08:30 AM - 09:50 AM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.580.495 (01)	Microfabrication Lab</td>
+	                    <td width="35%">W 1:30PM - 2:20PM, Th 1:00PM - 4:50PM</td>
+	                    <td>Approval Required</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>A. Andreou,  J. Wang</td>
+                                        <td>EN</td>
+                                        <td>4.00</td>
+                                        <td>EN Biomedical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>This laboratory course introduces the principles used in the construction of microelectronic devices, sensors, and micromechanical structures. Students will work in the laboratory on the fabrication and testing of a device. Accompanying lecture material covers basic processing steps, design and analysis CAD tools, and national foundry services. 
+Co-listed with EN.530.495 and EN.520.495
+Seniors only. Permission Required. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | W <br>        01:30 PM - 02:20 PM | Homewood Campus <br> <br> 08-27-2015 to 12-04-2015 | Th <br>        01:00 PM - 04:50 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.580.495 (02)	Microfabrication Lab</td>
+	                    <td width="35%">W 1:30PM - 2:20PM, Th 5:00PM - 8:50PM</td>
+	                    <td>Approval Required</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>A. Andreou,  J. Wang</td>
+                                        <td>EN</td>
+                                        <td>4.00</td>
+                                        <td>EN Biomedical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>This laboratory course introduces the principles used in the construction of microelectronic devices, sensors, and micromechanical structures. Students will work in the laboratory on the fabrication and testing of a device. Accompanying lecture material covers basic processing steps, design and analysis CAD tools, and national foundry services. 
+Co-listed with EN.530.495 and EN.520.495
+Seniors only. Permission Required. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | W <br>        01:30 PM - 02:20 PM | Homewood Campus <br> <br> 08-27-2015 to 12-04-2015 | Th <br>        05:00 PM - 08:50 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.580.495 (04)	Microfabrication Lab</td>
+	                    <td width="35%">W 1:30PM - 2:20PM, F 1:00PM - 4:50PM</td>
+	                    <td>Approval Required</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>A. Andreou,  J. Wang</td>
+                                        <td>EN</td>
+                                        <td>4.00</td>
+                                        <td>EN Biomedical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>This laboratory course introduces the principles used in the construction of microelectronic devices, sensors, and micromechanical structures. Students will work in the laboratory on the fabrication and testing of a device. Accompanying lecture material covers basic processing steps, design and analysis CAD tools, and national foundry services. 
+Co-listed with EN.530.495 and EN.520.495
+Seniors only. Permission Required. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | W <br>        01:30 PM - 02:20 PM | Homewood Campus <br> <br> 08-27-2015 to 12-04-2015 | F <br>        01:00 PM - 04:50 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.580.495 (05)	Microfabrication Lab</td>
+	                    <td width="35%">W 1:30PM - 2:20PM, Th 8:00AM - 11:50AM</td>
+	                    <td>Approval Required</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>A. Andreou,  J. Wang</td>
+                                        <td>EN</td>
+                                        <td>4.00</td>
+                                        <td>EN Biomedical Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>This laboratory course introduces the principles used in the construction of microelectronic devices, sensors, and micromechanical structures. Students will work in the laboratory on the fabrication and testing of a device. Accompanying lecture material covers basic processing steps, design and analysis CAD tools, and national foundry services. 
+Co-listed with EN.530.495 and EN.520.495
+Seniors only. Permission Required. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule<br> 08-27-2015 to 12-04-2015 | W <br>        01:30 PM - 02:20 PM | Homewood Campus <br> <br> 08-27-2015 to 12-04-2015 | Th <br>        08:00 AM - 11:50 AM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class=" clickable">
+	                    <td width="50%">EN.670.495 (01)	Animation in Nanotechnology &amp; Medicine</td>
+	                    <td width="35%"></td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Upper Level Undergraduate</td>
+                                        <td>P. Searson</td>
+                                        <td>EN</td>
+                                        <td>3.00</td>
+                                        <td>EN Institute for NanoBio Technology, EN General Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>Not Available </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | TBA <br>         | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+    <tr>
+                <tr class="even clickable">
+	                    <td width="50%">EN.670.619 (01)	Fundamental Physics and Chemistry of Nanomaterials</td>
+	                    <td width="35%">TTh 1:30PM - 2:45PM</td>
+	                    <td>Open</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Graduate</td>
+                                        <td>M. Bevan,  C. Chien,  N. Markovic,  J. McCaffery,  P. Searson</td>
+                                        <td></td>
+                                        <td>0.00</td>
+                                        <td>EN Institute for NanoBio Technology, EN Chemical &amp; Biomolecular Engineering     , EN Materials Science &amp; Engineering</td>
+                                        <td>Homewood Campus</td>
+										<td>30</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>This course will cover the physics and chemistry relevant to the design, synthesis, and characterization of nanoparticles.  Topics include nanoparticle synthesis, functionalization, surface engineering, and applications in diagnostics and therapeutics.  The properties of semiconductor quantum dots and magnetic nanoparticles will be reviewed along with techniques for nanoparticle manipulation, particle tracking, and bio-microrheology.  Patterning tools including soft lithography, optical lithography, e-beam lithography, and template lithography will be discussed.  Electron and scanning probe microscopy will be reviewed.
+Cross-listed with Materials Science &amp; Engineering and Chemical &amp; Biomolecular Engineering. </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">Schedule <br> <br>        08-27-2015 to 12-04-2015 | TTh <br>        01:30 PM - 02:45 PM | Homewood Campus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+			</tbody>
+        </table>
+        </div>
+    </body>
+</html>

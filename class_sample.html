@@ -1,0 +1,429 @@
+<html>
+    <head><title>
+        Johns Hopkins University - Class Search
+    </title><link href="CSS/styles.css" type="text/css" rel="stylesheet" /><link href="CSS/bootstrap.css" type="text/css" rel="stylesheet" />
+    <script language="javascript"  type="text/javascript" src="include/prototype.js"></script>
+    <script language="javascript"  type="text/javascript" src="include/scriptaculous.js" ></script>
+    <script language="javascript"  type="text/javascript" src="include/jss_controls.js" ></script>
+    <script language="javascript"  type="text/javascript" src="include/html5shiv.js" ></script>
+    
+    <script language="javascript" type="text/javascript" src="Include/jquery-1.9.1.min.js"></script>
+    <script language="javascript" type="text/javascript" src="SectionDetailsControl.js"></script>
+    <script language="javascript" type="text/javascript">
+        $.noConflict();
+        function toggleBox(control){
+            var div = control.nextSibling;
+            while(div.tagName == null || div.tagName.toUpperCase() != "DIV") div = div.nextSibling;
+            if(!div) return;
+            var img = control.childNodes[0];
+            while(img.tagName == null || img.tagName.toUpperCase() != "IMG") img = img.nextSibling;
+            if(div.style.display == "none"){
+                div.style.display="block";
+                img.src = img.src.replace("right","down");
+            }
+            else {
+                div.style.display="none";
+                img.src = img.src.replace("down","right");
+            }
+        }
+    function showClassDetails(control,id){
+        var row = control;
+        var cnt = 0; //
+        while(cnt++ < 100 && row.tagName.toUpperCase() != "TR"){
+            row = row.parentNode;
+        }
+        var column_count = row.getElementsByTagName("TD").length;
+        var nextrow = row.nextSibling;
+        cnt = 0;
+        while(nextrow.tagName == null || nextrow.tagName.toUpperCase() != "TR")
+        nextrow = nextrow.nextSibling;
+        
+        if(nextrow.style.display == "none"){
+            
+            var url = "ClassDetails.aspx";
+            var myup = $(control.parentNode);
+            var mycn = myup.className;
+            myup.className = "icon-ajax-16-right";
+            new Ajax.Request(url, {
+                             method: "get",
+                             parameters: { "id": id},
+                             requestHeaders: {"If-Modified-Since": "Thu, 1 Jan 1970 00:00:00 GMT"},
+                             onSuccess: function(transport) {
+                             try{
+                             nextrow.style.display = "";
+                             var divname = "details_" + id;
+                             var content = "<div style=\"display:none;border-bottom:solid 1px black;\"  id=\"" + divname + "\">" + transport.responseText + "</div>";
+                             if(nextrow.cells.length == 0){
+                             var newCell = nextrow.insertCell(0);
+                             newCell.colSpan = column_count;
+                             newCell.innerHTML = content;
+                             }
+                             else{
+                             nextrow.cells[0].innerHTML = content;
+                             }
+                             control.innerHTML = control.innerHTML.replace("[+]","[-]");
+                             new Effect.SlideDown(
+                                                  divname,
+                                                  {
+                                                  duration:.5
+                                                  }
+                                                  
+                                                  );
+                             }catch(ex){alert(ex.message);}
+                             },
+                             onComplete: function(transport) {
+                             myup.className = mycn;
+                             },
+                             onError: function(err){alert(err.message);}
+                             });
+                             
+        }
+        else{
+            nextrow.style.display = "none";
+            control.innerHTML = control.innerHTML.replace("[-]","[+]");
+        }
+    }
+    
+    function showFacultyPopup(control, strOfFacultyIDs){
+        var row = control;
+        var cnt = 0; //
+        while(cnt++ < 100 && row.tagName.toUpperCase() != "TR"){
+            row = row.parentNode;
+        }
+        var column_count = row.getElementsByTagName("TD").length;
+        var nextrow = row.nextSibling;
+        
+        while(nextrow.tagName == null || nextrow.className != "facultyDetails" || nextrow.tagName.toUpperCase() != "TR")
+        nextrow = nextrow.nextSibling;
+        
+        if(nextrow.style.display == "none"){
+            
+            var url = "FacultyDetail.aspx";
+            var myup = $(control.parentNode);
+            var mycn = myup.className;
+            myup.className = "icon-ajax-16-right";
+            new Ajax.Request(url, {
+                             method: "get",
+                             parameters: { "id": strOfFacultyIDs },
+                             requestHeaders: {"If-Modified-Since": "Thu, 1 Jan 1970 00:00:00 GMT"},
+                             onSuccess: function(transport) {
+                             try{
+                             nextrow.style.display = "";
+                             var content = "<div style=\"display:none;width=500px;border-bottom:solid 1px black;\">" + transport.responseText + "</div>";
+                             if(nextrow.cells.length == 0){
+                             var newCell = nextrow.insertCell(0);
+                             newCell.colSpan = column_count;
+                             newCell.innerHTML = content;
+                             }
+                             else{
+                             nextrow.cells[0].innerHTML = content;
+                             }
+                             control.innerHTML = control.innerHTML.replace("[+]","[-]");
+                             new Effect.SlideDown(nextrow.firstChild.firstChild, //hack since divname will not be unique
+                                                  {
+                                                  duration:.5
+                                                  }
+                                                  
+                                                  );
+                             }catch(ex){alert(ex.message);}
+                             },
+                             onComplete: function(transport) {
+                             myup.className = mycn;
+                             },
+                             onError: function(err){alert(err.message);}
+                             });
+                             
+        }
+        else{
+            nextrow.style.display = "none";
+            control.innerHTML = control.innerHTML.replace("[-]","[+]");
+        }
+    }
+    
+    function showTextbookPopup(el, strOfSectionIDs) {
+        var row = $$(".textBookInfo_" + strOfSectionIDs)[0];
+        var url = "BookVendor.aspx";
+        
+        if (row.style.display == "none") {
+            
+            var mycn = el.parentNode.className;
+            el.parentNode.className = "icon-ajax-16-right";
+            
+            new Ajax.Request(url, {
+                             method: "get",
+                             parameters: { "SSS_SectionsID": strOfSectionIDs },
+                             requestHeaders: { "If-Modified-Since": "Thu, 1 Jan 1970 00:00:00 GMT" },
+                             onSuccess: function(transport) {
+                             try {
+                             row.style.display = "";
+                             var content = transport.responseText;
+                             row.innerHTML = content;
+                             el.innerHTML = el.innerHTML.replace("[+]", "[-]");
+                             
+                             new Effect.SlideDown(
+                                                  row,
+                                                  {
+                                                  duration: .5
+                                                  }
+                                                  );
+                             } catch(ex) {
+                             alert(ex.message);
+                             }
+                             },
+                             onComplete: function(transport) {
+                             el.parentNode.className = mycn;
+                             },
+                             onError: function(err) { alert(err.message); }
+                             });
+        } else {
+            row.style.display = "none";
+            el.innerHTML = el.innerHTML.replace("[-]","[+]");
+        }
+    }
+    </script>
+    </head>
+    <body>
+        <div style="padding-top:22px; padding-right:0px; padding-bottom:50px; padding-left:0px;">
+            <img src="images/IsisLogo.png" alt="Johns Hopkins University" height="40px" width="300px" border="0px" style="float: left;" />
+        </div>
+        <nav class="navbar navbar-custom">&#xa0;</nav>
+        <!--
+         <div style="height:20px; margin-bottom:14px; border-color: #999999; background-color: #014274">&#xa0;</div>
+         -->
+        
+        <form name="aspnetForm" method="post" action="results.aspx" id="aspnetForm">
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTEwNTcwNDIwNg9kFgJmD2QWAgIDD2QWAgIBD2QWCgIBDzwrAAsAZAIFDxYCHgRUZXh0BQExZAIHDxYCHgtfIUl0ZW1Db3VudAIDFgZmD2QWBGYPFQEGU2Nob29sZAIBDxYCHwECAhYEZg9kFgRmDxUCI0tyaWVnZXIgU2Nob29sIG9mIEFydHMgYW5kIFNjaWVuY2VzAGQCAQ8PFgQeC0NvbW1hbmROYW1lBQZTY2hvb2weD0NvbW1hbmRBcmd1bWVudAUjS3JpZWdlciBTY2hvb2wgb2YgQXJ0cyBhbmQgU2NpZW5jZXNkZAIBD2QWBGYPFQIdV2hpdGluZyBTY2hvb2wgb2YgRW5naW5lZXJpbmcAZAIBDw8WBB8CBQZTY2hvb2wfAwUdV2hpdGluZyBTY2hvb2wgb2YgRW5naW5lZXJpbmdkZAIBD2QWBGYPFQEEVGVybWQCAQ8WAh8BAgEWAmYPZBYEZg8VAglGYWxsIDIwMTQAZAIBDw8WBB8CBQRUZXJtHwMFCUZhbGwgMjAxNGRkAgIPZBYEZg8VAQ1Db3Vyc2UgTnVtYmVyZAIBDxYCHwECARYCZg9kFgRmDxUCCkVOLjUxMC4zMTIAZAIBDw8WBB8CBQ1Db3Vyc2UgTnVtYmVyHwMFCkVOLjUxMC4zMTJkZAIJDw8WAh4HVmlzaWJsZWhkFhICAQ8PFgIfBGhkZAIDDw8WAh8EaGRkAgUPDxYCHwRoZGQCBw8PFgIfBGhkZAIJDw8WAh8EaGRkAgsPDxYCHwRoZGQCDQ8PFgIfBGhkZAIPDw8WAh8EaGRkAhEPZBYEAg8PEA8WAh4HQ2hlY2tlZGhkZGRkAhEPEA8WAh8FaGRkZGQCCw9kFgwCAQ8QZGQWAQIBZAIDDxBkZBYBAgFkAgUPDxYCHwAFDltDb2xsYXBzZSBBbGxdZGQCBw8PFgIfBGhkFgZmDw8WBB8ABQs8PCBQcmV2aW91cx8EaGRkAgIPFgIfAQIBFgJmD2QWBAIBDw8WBB8DBQExHwRoZBYCZg8VAQExZAIDDw8WAh8EZ2QWAmYPFQEBMWQCBA8PFgQfAAUHTmV4dCA+Ph8EaGRkAgkPFgIfAQIBFgRmD2QWAgIBDxYCHwRoZAIBD2QWEgIBDxYCHwAFBGV2ZW5kAgMPFgIfBGgWAmYPFQEdV2hpdGluZyBTY2hvb2wgb2YgRW5naW5lZXJpbmdkAgQPFQIKRU4uNTEwLjMxMgIwMWQCBQ8WAh8EaBYCZg8VAgY0MjU3NTQGNDI1NzU0ZAIGDxUBGFRoZXJtb2R5bmFtaWNzL01hdGVyaWFsc2QCBw8WAh8EaGQCCA8VAwlGYWxsIDIwMTQPSG9tZXdvb2QgQ2FtcHVzFU1XRiAxMjowMFBNIC0gMTI6NTBQTWQCCg8VAQRPcGVuZAILD2QWAgIBD2QWIAIBDw8WAh8ABRlVcHBlciBMZXZlbCBVbmRlcmdyYWR1YXRlZGQCAw9kFgICAQ8PFgIfAAUCRU5kZAIFDxYCHwRoZAIHDw8WAh8ABQQzLjAwZGQCCQ8PFgIfAAUiRU4gTWF0ZXJpYWxzIFNjaWVuY2UgJiBFbmdpbmVlcmluZ2RkAgsPZBYCAgEPDxYCHwAFAjQ1ZGQCDQ8PFgIfAAX4AlNlY29uZCBvZiB0aGUgSW50cm9kdWN0aW9uIHRvIE1hdGVyaWFscyBTY2llbmNlIHNlcmllcywgdGhpcyBjb3Vyc2UgZXhhbWluZXMgdGhlIHByaW5jaXBsZXMgb2YgdGhlcm1vZHluYW1pY3MgYXMgdGhleSBhcHBseSB0byBtYXRlcmlhbHMuIFRvcGljcyBpbmNsdWRlIGZ1bmRhbWVudGFsIHByaW5jaXBsZXMgb2YgdGhlcm1vZHluYW1pY3MsIGVxdWlsaWJyaXVtIGluIGhvbW9nZW5lb3VzIGFuZCBoZXRlcm9nZW5lb3VzIHN5c3RlbXMsIHRoZXJtb2R5bmFtaWNzIG9mIG11bHRpY29tcG9uZW50IHN5c3RlbXMsIHBoYXNlIGRpYWdyYW1zLCB0aGVybW9keW5hbWljcyBvZiBkZWZlY3RzLCBhbmQgZWxlbWVudGFyeSBzdGF0aXN0aWNhbCB0aGVybW9keW5hbWljcy5kZAIPDw9kFgIeB29uY2xpY2sFL3Nob3dUZXh0Ym9va1BvcHVwKHRoaXMsICc0MjU3NTQnKTtyZXR1cm4gZmFsc2U7ZAIRDxYCHgVjbGFzcwUTdGV4dEJvb2tJbmZvXzQyNTc1NGQCEw8PFgIfBGhkZAIVDw8WAh8EaGRkAhcPDxYCHwRoZGQCGQ8WBB8BAv////8PHwRoZAIbDxYCHwECARYCAgEPZBYEAgEPFgIfBGhkAgIPFQQYMDgtMjgtMjAxNCB0byAxMi0wNS0yMDE0A01XRhMxMjowMCBQTSAtIDEyOjUwIFBND0hvbWV3b29kIENhbXB1c2QCHQ8WAh8BAgEWAgIBD2QWBAIBDxYCHwRoZAICDxUCzRIoIDxhIGhyZWY9IiMiIGNsYXNzPSJsaW5rUHJlcmVxXzQyNTc1NCIgb25jbGljaz0ic2hvd1ByZXJlcURldGFpbHModGhpcywgJ0FTLjExMC4xMDYnKTtyZXR1cm4gZmFsc2U7Ij5BUy4xMTAuMTA2PGFzcDpQbGFjZUhvbGRlciBydW5hdD0ic2VydmVyIiBJRD0icGhQcmVyZXFMaW5rRW5kIj5bK108L2E+PC9hc3A6UGxhY2VIb2xkZXI+IEFORCA8YSBocmVmPSIjIiBjbGFzcz0ibGlua1ByZXJlcV80MjU3NTQiIG9uY2xpY2s9InNob3dQcmVyZXFEZXRhaWxzKHRoaXMsICdBUy4xMTAuMTA3Jyk7cmV0dXJuIGZhbHNlOyI+QVMuMTEwLjEwNzxhc3A6UGxhY2VIb2xkZXIgcnVuYXQ9InNlcnZlciIgSUQ9InBoUHJlcmVxTGlua0VuZCI+WytdPC9hPjwvYXNwOlBsYWNlSG9sZGVyPiBPUiA8YSBocmVmPSIjIiBjbGFzcz0ibGlua1ByZXJlcV80MjU3NTQiIG9uY2xpY2s9InNob3dQcmVyZXFEZXRhaWxzKHRoaXMsICdBUy4xMTAuMTA4Jyk7cmV0dXJuIGZhbHNlOyI+QVMuMTEwLjEwODxhc3A6UGxhY2VIb2xkZXIgcnVuYXQ9InNlcnZlciIgSUQ9InBoUHJlcmVxTGlua0VuZCI+WytdPC9hPjwvYXNwOlBsYWNlSG9sZGVyPiBBTkQgPGEgaHJlZj0iIyIgY2xhc3M9ImxpbmtQcmVyZXFfNDI1NzU0IiBvbmNsaWNrPSJzaG93UHJlcmVxRGV0YWlscyh0aGlzLCAnQVMuMTEwLjEwOCcpO3JldHVybiBmYWxzZTsiPkFTLjExMC4xMDg8YXNwOlBsYWNlSG9sZGVyIHJ1bmF0PSJzZXJ2ZXIiIElEPSJwaFByZXJlcUxpbmtFbmQiPlsrXTwvYT48L2FzcDpQbGFjZUhvbGRlcj4pIEFORCAoIDxhIGhyZWY9IiMiIGNsYXNzPSJsaW5rUHJlcmVxXzQyNTc1NCIgb25jbGljaz0ic2hvd1ByZXJlcURldGFpbHModGhpcywgJ0VOLjUxMC4xMDEnKTtyZXR1cm4gZmFsc2U7Ij5FTi41MTAuMTAxPGFzcDpQbGFjZUhvbGRlciBydW5hdD0ic2VydmVyIiBJRD0icGhQcmVyZXFMaW5rRW5kIj5bK108L2E+PC9hc3A6UGxhY2VIb2xkZXI+IE9SIDxhIGhyZWY9IiMiIGNsYXNzPSJsaW5rUHJlcmVxXzQyNTc1NCIgb25jbGljaz0ic2hvd1ByZXJlcURldGFpbHModGhpcywgJ0FTLjAzMC4xMDEnKTtyZXR1cm4gZmFsc2U7Ij5BUy4wMzAuMTAxPGFzcDpQbGFjZUhvbGRlciBydW5hdD0ic2VydmVyIiBJRD0icGhQcmVyZXFMaW5rRW5kIj5bK108L2E+PC9hc3A6UGxhY2VIb2xkZXI+IEFORCA8YSBocmVmPSIjIiBjbGFzcz0ibGlua1ByZXJlcV80MjU3NTQiIG9uY2xpY2s9InNob3dQcmVyZXFEZXRhaWxzKHRoaXMsICdBUy4wMzAuMTAyJyk7cmV0dXJuIGZhbHNlOyI+QVMuMDMwLjEwMjxhc3A6UGxhY2VIb2xkZXIgcnVuYXQ9InNlcnZlciIgSUQ9InBoUHJlcmVxTGlua0VuZCI+WytdPC9hPjwvYXNwOlBsYWNlSG9sZGVyPiApIEFORCAoIDxhIGhyZWY9IiMiIGNsYXNzPSJsaW5rUHJlcmVxXzQyNTc1NCIgb25jbGljaz0ic2hvd1ByZXJlcURldGFpbHModGhpcywgJ0FTLjE3MS4xMDEnKTtyZXR1cm4gZmFsc2U7Ij5BUy4xNzEuMTAxPGFzcDpQbGFjZUhvbGRlciBydW5hdD0ic2VydmVyIiBJRD0icGhQcmVyZXFMaW5rRW5kIj5bK108L2E+PC9hc3A6UGxhY2VIb2xkZXI+IEFORCA8YSBocmVmPSIjIiBjbGFzcz0ibGlua1ByZXJlcV80MjU3NTQiIG9uY2xpY2s9InNob3dQcmVyZXFEZXRhaWxzKHRoaXMsICdBUy4xNzEuMTAyJyk7cmV0dXJuIGZhbHNlOyI+QVMuMTcxLjEwMjxhc3A6UGxhY2VIb2xkZXIgcnVuYXQ9InNlcnZlciIgSUQ9InBoUHJlcmVxTGlua0VuZCI+WytdPC9hPjwvYXNwOlBsYWNlSG9sZGVyPiBPUiA8YSBocmVmPSIjIiBjbGFzcz0ibGlua1ByZXJlcV80MjU3NTQiIG9uY2xpY2s9InNob3dQcmVyZXFEZXRhaWxzKHRoaXMsICdBUy4xNzEuMTAzJyk7cmV0dXJuIGZhbHNlOyI+QVMuMTcxLjEwMzxhc3A6UGxhY2VIb2xkZXIgcnVuYXQ9InNlcnZlciIgSUQ9InBoUHJlcmVxTGlua0VuZCI+WytdPC9hPjwvYXNwOlBsYWNlSG9sZGVyPiBBTkQgPGEgaHJlZj0iIyIgY2xhc3M9ImxpbmtQcmVyZXFfNDI1NzU0IiBvbmNsaWNrPSJzaG93UHJlcmVxRGV0YWlscyh0aGlzLCAnQVMuMTcxLjEwNCcpO3JldHVybiBmYWxzZTsiPkFTLjE3MS4xMDQ8YXNwOlBsYWNlSG9sZGVyIHJ1bmF0PSJzZXJ2ZXIiIElEPSJwaFByZXJlcUxpbmtFbmQiPlsrXTwvYT48L2FzcDpQbGFjZUhvbGRlcj4gKSBBTkQgPGEgaHJlZj0iIyIgY2xhc3M9ImxpbmtQcmVyZXFfNDI1NzU0IiBvbmNsaWNrPSJzaG93UHJlcmVxRGV0YWlscyh0aGlzLCAnRU4uNTEwLjIwMicpO3JldHVybiBmYWxzZTsiPkVOLjUxMC4yMDI8YXNwOlBsYWNlSG9sZGVyIHJ1bmF0PSJzZXJ2ZXIiIElEPSJwaFByZXJlcUxpbmtFbmQiPlsrXTwvYT48L2FzcDpQbGFjZUhvbGRlcj4gb3IgYW5vdGhlciBwcm9ncmFtbWluZyBjb3Vyc2U7IG9yIHBlcm1pc3Npb24gb2YgaW5zdHJ1Y3Rvci4NCqs2PGRpdiBJRD0iZGl2UHJlcmVxX0FTLjExMC4xMDYiIHN0eWxlPSJkaXNwbGF5Om5vbmU7Ij48c3Ryb25nPkFTLjExMC4xMDYgQ2FsY3VsdXMgSTwvc3Ryb25nPjxici8+RGlmZmVyZW50aWFsIGFuZCBpbnRlZ3JhbCBjYWxjdWx1cy4gSW5jbHVkZXMgYW5hbHl0aWMgZ2VvbWV0cnksIGZ1bmN0aW9ucywgbGltaXRzLCBpbnRlZ3JhbHMgYW5kIGRlcml2YXRpdmVzLCBpbnRyb2R1Y3Rpb24gdG8gZGlmZmVyZW50aWFsIGVxdWF0aW9ucywgZnVuY3Rpb25zIG9mIHNldmVyYWwgdmFyaWFibGVzLCBsaW5lYXIgc3lzdGVtcywgYXBwbGljYXRpb25zIGZvciBzeXN0ZW1zIG9mIGxpbmVhciBkaWZmZXJlbnRpYWwgZXF1YXRpb25zLCBwcm9iYWJpbGl0eSBkaXN0cmlidXRpb25zLiBNYW55IGFwcGxpY2F0aW9ucyB0byB0aGUgYmlvbG9naWNhbCBhbmQgc29jaWFsIHNjaWVuY2VzIHdpbGwgYmUgZGlzY3Vzc2VkLjwvZGl2PjxkaXYgSUQ9ImRpdlByZXJlcV9BUy4xMTAuMTA3IiBzdHlsZT0iZGlzcGxheTpub25lOyI+PHN0cm9uZz5BUy4xMTAuMTA3IENhbGN1bHVzIElJIChGb3IgQmlvbG9naWNhbCBhbmQgU29jaWFsIFNjaWVuY2UpPC9zdHJvbmc+PGJyLz5EaWZmZXJlbnRpYWwgYW5kIGludGVncmFsIGNhbGN1bHVzLiBJbmNsdWRlcyBhbmFseXRpYyBnZW9tZXRyeSwgZnVuY3Rpb25zLCBsaW1pdHMsIGludGVncmFscyBhbmQgZGVyaXZhdGl2ZXMsIGludHJvZHVjdGlvbiB0byBkaWZmZXJlbnRpYWwgZXF1YXRpb25zLCBmdW5jdGlvbnMgb2Ygc2V2ZXJhbCB2YXJpYWJsZXMsIGxpbmVhciBzeXN0ZW1zLCBhbmQgYXBwbGljYXRpb25zIGZvciBzeXN0ZW1zIG9mIGxpbmVhciBkaWZmZXJlbnRpYWwgZXF1YXRpb25zLCBwcm9iYWJpbGl0eSBkaXN0cmlidXRpb25zLjwvZGl2PjxkaXYgSUQ9ImRpdlByZXJlcV9BUy4xMTAuMTA4IiBzdHlsZT0iZGlzcGxheTpub25lOyI+PHN0cm9uZz5BUy4xMTAuMTA4IENhbGN1bHVzIEk8L3N0cm9uZz48YnIvPkRpZmZlcmVudGlhbCBhbmQgaW50ZWdyYWwgY2FsY3VsdXMuIEluY2x1ZGVzIGFuYWx5dGljIGdlb21ldHJ5LCBmdW5jdGlvbnMsIGxpbWl0cywgaW50ZWdyYWxzIGFuZCBkZXJpdmF0aXZlcywgcG9sYXIgY29vcmRpbmF0ZXMsIHBhcmFtZXRyaWMgZXF1YXRpb25zLCBUYXlsb3IncyB0aGVvcmVtIGFuZCBhcHBsaWNhdGlvbnMsIGluZmluaXRlIHNlcXVlbmNlcyBhbmQgc2VyaWVzLkNhbGN1bHVzIEk8L3N0cm9uZz48YnIvPkRpZmZlcmVudGlhbCBhbmQgaW50ZWdyYWwgY2FsY3VsdXMuIEluY2x1ZGVzIGFuYWx5dGljIGdlb21ldHJ5LCBmdW5jdGlvbnMsIGxpbWl0cywgaW50ZWdyYWxzIGFuZCBkZXJpdmF0aXZlcywgcG9sYXIgY29vcmRpbmF0ZXMsIHBhcmFtZXRyaWMgZXF1YXRpb25zLCBUYXlsb3IncyB0aGVvcmVtIGFuZCBhcHBsaWNhdGlvbnMsIGluZmluaXRlIHNlcXVlbmNlcyBhbmQgc2VyaWVzLjwvZGl2PjxkaXYgSUQ9ImRpdlByZXJlcV9BUy4xMTAuMTA4IiBzdHlsZT0iZGlzcGxheTpub25lOyI+PHN0cm9uZz5BUy4xMTAuMTA4IENhbGN1bHVzIEk8L3N0cm9uZz48YnIvPkRpZmZlcmVudGlhbCBhbmQgaW50ZWdyYWwgY2FsY3VsdXMuIEluY2x1ZGVzIGFuYWx5dGljIGdlb21ldHJ5LCBmdW5jdGlvbnMsIGxpbWl0cywgaW50ZWdyYWxzIGFuZCBkZXJpdmF0aXZlcywgcG9sYXIgY29vcmRpbmF0ZXMsIHBhcmFtZXRyaWMgZXF1YXRpb25zLCBUYXlsb3IncyB0aGVvcmVtIGFuZCBhcHBsaWNhdGlvbnMsIGluZmluaXRlIHNlcXVlbmNlcyBhbmQgc2VyaWVzLkNhbGN1bHVzIEk8L3N0cm9uZz48YnIvPkRpZmZlcmVudGlhbCBhbmQgaW50ZWdyYWwgY2FsY3VsdXMuIEluY2x1ZGVzIGFuYWx5dGljIGdlb21ldHJ5LCBmdW5jdGlvbnMsIGxpbWl0cywgaW50ZWdyYWxzIGFuZCBkZXJpdmF0aXZlcywgcG9sYXIgY29vcmRpbmF0ZXMsIHBhcmFtZXRyaWMgZXF1YXRpb25zLCBUYXlsb3IncyB0aGVvcmVtIGFuZCBhcHBsaWNhdGlvbnMsIGluZmluaXRlIHNlcXVlbmNlcyBhbmQgc2VyaWVzLjwvZGl2PjxkaXYgSUQ9ImRpdlByZXJlcV9FTi41MTAuMTAxIiBzdHlsZT0iZGlzcGxheTpub25lOyI+PHN0cm9uZz5FTi41MTAuMTAxIEludHJvZHVjdGlvbiB0byBNYXRlcmlhbHMgQ2hlbWlzdHJ5PC9zdHJvbmc+PGJyLz5CYXNpYyBwcmluY2lwbGVzIG9mIGNoZW1pc3RyeSBhbmQgaG93IHRoZXkgYXBwbHkgdG8gdGhlIGJlaGF2aW9yIG9mIG1hdGVyaWFscyBpbiB0aGUgc29saWQgc3RhdGUuIFRoZSByZWxhdGlvbnNoaXAgYmV0d2VlbiBlbGVjdHJvbmljIHN0cnVjdHVyZSwgY2hlbWljYWwgYm9uZGluZywgYW5kIGNyeXN0YWwgc3RydWN0dXJlIGlzIGRldmVsb3BlZC4gQXR0ZW50aW9uIGlzIGdpdmVuIHRvIGNoYXJhY3Rlcml6YXRpb24gb2YgYXRvbWljIGFuZCBtb2xlY3VsYXIgYXJyYW5nZW1lbnRzIGluIGNyeXN0YWxsaW5lIGFuZCBhbW9ycGhvdXMgc29saWRzOiBtZXRhbHMsIGNlcmFtaWNzLCBzZW1pY29uZHVjdG9ycywgYW5kIHBvbHltZXJzIChpbmNsdWRpbmcgcHJvdGVpbnMpLiBFeGFtcGxlcyBhcmUgZHJhd24gZnJvbSBpbmR1c3RyaWFsIHByYWN0aWNlIChpbmNsdWRpbmcgdGhlIGVudmlyb25tZW50YWwgaW1wYWN0IG9mIGNoZW1pY2FsIHByb2Nlc3NlcyksIGZyb20gZW5lcmd5IGdlbmVyYXRpb24gYW5kIHN0b3JhZ2UgKHN1Y2ggYXMgYmF0dGVyaWVzIGFuZCBmdWVsIGNlbGxzKSwgYW5kIGZyb20gZW1lcmdpbmcgdGVjaG5vbG9naWVzIChzdWNoIGFzIGJpb21hdGVyaWFscykuICBTdHVkZW50cyBtYXkgcmVjZWl2ZSBjcmVkaXQgZm9yIEFTLjAzMC4xMDMgb3IgRU4uNTEwLjEwMSwgYnV0IG5vdCBib3RoLjwvZGl2PjxkaXYgSUQ9ImRpdlByZXJlcV9BUy4wMzAuMTAxIiBzdHlsZT0iZGlzcGxheTpub25lOyI+PHN0cm9uZz5BUy4wMzAuMTAxIEludHJvZHVjdG9yeSBDaGVtaXN0cnkgSTwvc3Ryb25nPjxici8+QW4gaW50cm9kdWN0aW9uIHRvIHRoZSBmdW5kYW1lbnRhbCBwcmluY2lwbGVzIG9mIGNoZW1pc3RyeS4gVGhlIG1haW4gdG9waWNzIHRvIGJlIGNvdmVyZWQgYXJlIGF0b21pYyBhbmQgbW9sZWN1bGFyIHN0cnVjdHVyZSBhdCB0aGUgbGV2ZWwgb2YgZG90IHN0cnVjdHVyZXMgYW5kIFZTRVBSIGdlb21ldHJpZXMsIHRoZSBwZXJpb2RpYyB0YWJsZSwgc3RvaWNoaW9tZXRyeSBhbmQgdGhlIGJhbGFuY2luZyBvZiBjaGVtaWNhbCBlcXVhdGlvbnMsIHRoZSBnYXMgbGF3cywgdGhlIGxhdyBvZiBtYXNzIGFjdGlvbiBhbmQgY2hlbWljYWwgZXF1aWxpYnJpdW0sIGFjaWRzIGFuZCBiYXNlcywgYW5kIGVsZW1lbnRhcnkgY2hlbWljYWwgdGhlcm1vZHluYW1pY3MuIFN3aXRjaGluZyBzZWN0b25zIHJlcXVpcmVzIGluc3RydWN0b3IncyBhcHByb3ZhbC4gQ29yZXF1aXNpdGU6IEFTLjAzMC4xMDU8L2Rpdj48ZGl2IElEPSJkaXZQcmVyZXFfQVMuMDMwLjEwMiIgc3R5bGU9ImRpc3BsYXk6bm9uZTsiPjxzdHJvbmc+QVMuMDMwLjEwMiBJbnRyb2R1Y3RvcnkgQ2hlbWlzdHJ5IElJPC9zdHJvbmc+PGJyLz5Db250aW51YXRpb24gb2YgQVMuMDMwLjEwMSBlbXBoYXNpemluZyBjaGVtaWNhbCBraW5ldGljcywgY2hlbWljYWwgYm9uZGluZy4gIFRvcGljczogIGVuZXJneSBsZXZlbHMgYW5kIHdhdmVmdW5jdGlvbnMgZm9yIHBhcnRpY2xlLWluLWEtYm94IGFuZCBoeWRyb2dlbiBhdG9tIGFuZCBhcHByb3hpbWF0ZSB3YXZlZnVuY3Rpb25zIGZvciBtb2xlY3VsZXMgaW5jbHVkaW5nIGludHJvZHVjdGlvbiB0byBoeWJyaWQgb3JiaXRhbHMuIA0KTm90ZTogQXBwcm9wcmlhdGUgYWRqdXN0aW5nIGNhcHMgc2hvdWxkIGJlIHVzZWQg4oCTIHRvIGVuc3VyZSBib3RoIHNlY3Rpb25zIGFyZSBhcHByb3hpbWF0ZWx5IHRoZSBzYW1lIHNpemU8L2Rpdj48ZGl2IElEPSJkaXZQcmVyZXFfQVMuMTcxLjEwMSIgc3R5bGU9ImRpc3BsYXk6bm9uZTsiPjxzdHJvbmc+QVMuMTcxLjEwMSBHZW5lcmFsIFBoeXNpY3M6UGh5c2ljYWwgU2NpZW5jZSBNYWpvciBJPC9zdHJvbmc+PGJyLz5PbmUteWVhciBjb3Vyc2UgaW4gZ2VuZXJhbCBwaHlzaWNzIGNvdmVyaW5nIG1lY2hhbmljcywgaGVhdCwgc291bmQsIGVsZWN0cmljaXR5IGFuZCBtYWduZXRpc20sIG9wdGljcywgYW5kIG1vZGVybiBwaHlzaWNzLk1pZHRlcm0gZXhhbXMgZm9yIGV2ZXJ5IHNlY3Rpb24gYXJlIGdpdmVuIGR1cmluZyB0aGUgOCBBTSBzZWN0aW9uIHRpbWUhIEFjY29yZGluZ2x5LCBzdHVkZW50cyByZWdpc3RlcmluZyBmb3Igc2VjdGlvbnMgYXQgdGltZXMgb3RoZXIgdGhhbiA4IEFNIG11c3QgcmV0YWluIGF2YWlsYWJpbGl0eSBmb3IgOCBBTSBzZWN0aW9ucyBhcyBuZWVkZWQuIFJlY29tbWVuZGVkIENvcmVxdWlzaXRlcyAoQVMuMTczLjExMSkgQU5EIChBUy4xMTAuMTA2IG9yIEFTLjExMC4xMDggb3IgQVMuMTEwLjExMyk8L2Rpdj48ZGl2IElEPSJkaXZQcmVyZXFfQVMuMTcxLjEwMiIgc3R5bGU9ImRpc3BsYXk6bm9uZTsiPjxzdHJvbmc+QVMuMTcxLjEwMiBHZW5lcmFsIFBoeXNpY3M6IFBoeXNpY2FsIFNjaWVuY2UgTWFqb3IgSUk8L3N0cm9uZz48YnIvPk9uZS15ZWFyIGNvdXJzZSBpbiBnZW5lcmFsIHBoeXNpY3MgY292ZXJpbmcgbWVjaGFuaWNzLCBoZWF0LCBzb3VuZCwgZWxlY3RyaWNpdHkgYW5kIG1hZ25ldGlzbSwgb3B0aWNzLCBhbmQgbW9kZXJuIHBoeXNpY3MuTWlkdGVybSBleGFtcyBmb3IgZXZlcnkgc2VjdGlvbiBhcmUgZ2l2ZW4gZHVyaW5nIHRoZSA4IEFNIHNlY3Rpb24gdGltZSEgQWNjb3JkaW5nbHksIHN0dWRlbnRzIHJlZ2lzdGVyaW5nIGZvciBzZWN0aW9ucyBhdCB0aW1lcyBvdGhlciB0aGFuIDggQU0gbXVzdCByZXRhaW4gYXZhaWxhYmlsaXR5IGZvciA4IEFNIHNlY3Rpb25zIGFzIG5lZWRlZC4gUmVjb21tZW5kZWQgQ29yZXF1aXNpdGU6IENhbGN1bHVzIChBUy4xMTAuMTA3IG9yIEFTLjExMC4xMDkgb3IgQVMuMTEwLjExMyk8L2Rpdj48ZGl2IElEPSJkaXZQcmVyZXFfQVMuMTcxLjEwMyIgc3R5bGU9ImRpc3BsYXk6bm9uZTsiPjxzdHJvbmc+QVMuMTcxLjEwMyBHZW5lcmFsIFBoeXNpY3MgSSBmb3IgQmlvbG9naWNhbCBTY2llbmNlIE1ham9yczwvc3Ryb25nPjxici8+U3RhbmRhcmQgY2FsY3VsdXMgYmFzZWQgcGh5c2ljcyB0YWlsb3JlZCB0byBzdHVkZW50cyBtYWpvcmluZyBpbiBvbmUgb2YgdGhlIGJpb2xvZ2ljYWwgc2NpZW5jZXMuIFRvcGljcyBpbiBtb2Rlcm4gcGh5c2ljcyBhbmQgaW4gZmx1aWQgZHluYW1pY3Mgd2lsbCBiZSBjb3ZlcmVkIGluIHRoaXMgY291cnNlLiANClJlY29tbWVuZGVkIENvcmVxdWlzaXRlczooQVMuMTczLjExMSkgQU5EIChBUy4xMTAuMTA2IG9yIEFTLjExMC4xMDggb3IgQVMuMTEwLjExMykNCk1pZHRlcm0gZXhhbXMgZm9yIGV2ZXJ5IHNlY3Rpb24gYXJlIGdpdmVuIGR1cmluZyB0aGUgOCBBTSBzZWN0aW9uIHRpbWUhIEFjY29yZGluZ2x5LCBzdHVkZW50cyByZWdpc3RlcmluZyBmb3Igc2VjdGlvbnMgYXQgdGltZXMgb3RoZXIgdGhhbiA4IEFNIG11c3QgcmV0YWluIGF2YWlsYWJpbGl0eSBmb3IgOCBBTSBzZWN0aW9ucyBhcyBuZWVkZWQuPC9kaXY+PGRpdiBJRD0iZGl2UHJlcmVxX0FTLjE3MS4xMDQiIHN0eWxlPSJkaXNwbGF5Om5vbmU7Ij48c3Ryb25nPkFTLjE3MS4xMDQgR2VuZXJhbCBQaHlzaWNzL0Jpb2xvZ3kgTWFqb3JzIElJPC9zdHJvbmc+PGJyLz5UaGlzIHR3by1zZW1lc3RlciBzZXF1ZW5jZSBpcyBkZXNpZ25lZCB0byBwcmVzZW50IGEgc3RhbmRhcmQgY2FsY3VsdXMtYmFzZWQgcGh5c2ljcyBwcmVwYXJhdGlvbiB0YWlsb3JlZCB0byBzdHVkZW50cyBtYWpvcmluZyBpbiBvbmUgb2YgdGhlIGJpb2xvZ2ljYWwgc2NpZW5jZXMuIFRvcGljcyBpbiBlbGVjdHJpY2l0eSAmIG1hZ25ldGlzbSwgb3B0aWNzLCBhbmQgbW9kZXJuIHBoeXNpY3Mgd2lsbCBiZSBjb3ZlcmVkIGluIHRoaXMgc2VtZXN0ZXIuIE1pZHRlcm0gZXhhbXMgZm9yIGV2ZXJ5IHNlY3Rpb24gYXJlIGdpdmVuIGR1cmluZyB0aGUgOCBBTSBzZWN0aW9uIHRpbWUhICBBY2NvcmRpbmdseSwgc3R1ZGVudHMgcmVnaXN0ZXJpbmcgZm9yIHNlY3Rpb25zIGF0IHRpbWVzIG90aGVyIHRoYW4gOCBBTSBtdXN0IHJldGFpbiBhdmFpbGFiaWxpdHkgZm9yIDggQU0gc2VjdGlvbnMgYXMgbmVlZGVkLiAgUmVjb21tZW5kZWQgQ291cnNlIEJhY2tncm91bmQ6IEMtIG9yIGJldHRlciBpbiBBUy4xNzEuMTAxIG9yIEFTLjE3MS4xMDM7IENvcmVxdWlzaXRlOiBBUy4xMTAuMTA5LCBBUyAxNzMuMTEyLjwvZGl2PjxkaXYgSUQ9ImRpdlByZXJlcV9FTi41MTAuMjAyIiBzdHlsZT0iZGlzcGxheTpub25lOyI+PHN0cm9uZz5FTi41MTAuMjAyIENvbXB1dGF0aW9uIGFuZCBQcm9ncmFtbWluZyBmb3IgTWF0ZXJpYWxzIFNjaWVudGlzdHMgYW5kIEVuZ2luZWVyczwvc3Ryb25nPjxici8+VGhpcyBjb3Vyc2Ugd2lsbCBpbnRyb2R1Y2Ugc3R1ZGVudHMgdG8gdGhlIGJhc2ljcyBvZiBwcm9ncmFtbWluZyBpbiB0aGUgTUFUTEFCIGVudmlyb25tZW50LiAgU3R1ZGVudHMgd2lsbCBidWlsZCBza2lsbHMgaW4gYWxnb3JpdGhtaWMgcHJvYmxlbSBzb2x2aW5nIGJ5IHByb2dyYW1taW5nIGFzc2lnbm1lbnRzIHJlZ2FyZGluZyBhIHJhbmdlIG9mIGJpb2xvZ2ljYWwgYW5kIG5vbi1iaW9sb2dpY2FsIG1hdGVyaWFscyBzeXN0ZW1zLiAgU3R1ZGVudHMgd2lsbCBsZWFybiB0byB3cml0ZSBmdW5jdGlvbiBkZWZpbml0aW9ucyBhbmQgZGVwbG95IGJhc2ljIG9wZXJhdGlvbnMgb2Ygc2VsZWN0aW9uIGFuZCBpdGVyYXRpb24gYXMgd2VsbCBhcyBNQVRMQUIgc3BlY2lmaWMgdmVjdG9yaXphdGlvbiBtZXRob2RzIGFuZCB0aGUgY29uc3RydWN0aW9uIG9mIGdyYXBoaWNhbCB1c2VyIGludGVyZmFjZXMuIEFwcGxpY2F0aW9ucyBtYXkgaW5jbHVkZSBtYXRlcmlhbHMgc3RydWN0dXJlLCBwaGFzZSBlcXVpbGlicml1bSwgcHJvcGFnYXRpbmcgcmVhY3Rpb25zLCBhbmQgb3RoZXIgcmVsZXZhbnQgc2NpZW50aWZpYyBhbmQgZW5naW5lZXJpbmcgYXBwbGljYXRpb25zLjwvZGl2PmQCHw8WBB8BAv////8PHwRoZAILDw8WAh8EaGQWBmYPDxYEHwAFCzw8IFByZXZpb3VzHwRoZGQCAg8WAh8BAgEWAmYPZBYEAgEPDxYEHwMFATEfBGhkFgJmDxUBATFkAgMPDxYCHwRnZBYCZg8VAQExZAIEDw8WBB8ABQdOZXh0ID4+HwRoZGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgQFV2N0bDAwJGNvbnRlbnQkcnB0Q3VycmVudENyaXRlcmlhJGN0bDAwJHJwdEN1cnJlbnRDcml0ZXJpYUZpbHRlcnMkY3RsMDAkaWJSZW1vdmVDcml0ZXJpYQVXY3RsMDAkY29udGVudCRycHRDdXJyZW50Q3JpdGVyaWEkY3RsMDAkcnB0Q3VycmVudENyaXRlcmlhRmlsdGVycyRjdGwwMSRpYlJlbW92ZUNyaXRlcmlhBVdjdGwwMCRjb250ZW50JHJwdEN1cnJlbnRDcml0ZXJpYSRjdGwwMSRycHRDdXJyZW50Q3JpdGVyaWFGaWx0ZXJzJGN0bDAwJGliUmVtb3ZlQ3JpdGVyaWEFV2N0bDAwJGNvbnRlbnQkcnB0Q3VycmVudENyaXRlcmlhJGN0bDAyJHJwdEN1cnJlbnRDcml0ZXJpYUZpbHRlcnMkY3RsMDAkaWJSZW1vdmVDcml0ZXJpYQozsyWx6SP1i6tPazOalhjw6W0t" />
+            
+            <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWEwKXg529BQKepriNAwLOp7yRAgK68/COBgLwmLTpCAKElIb/AQLkxLOCCgLIgKDoCgKK8JiaDgLN0NXiDAKJ6ZaxBALRsYngAgKMzPv8DgKOzMf8DgKPzPv8DgKJzMf8DgKKzPv8DgKqjaCrCQK9p6D0BYqkmu4olRBDHG0dh3voLjKtpAYF" />
+            <div>
+                
+                
+                <h1>Search Results</h1>
+                
+                <table width="100%">
+                    <tr>
+                        <td valign="top" width="225">
+                            <a href="./">Start a New Search </a>
+                            <br />
+                            <br />
+                            <em>1 results</em> - <img src="images/print.gif" align="middle" alt="Print"/> <a href="javascript:window.print()">print this page</a>
+                            <br /><br />
+                            <strong>Current Search Criteria</strong><br/><br/>
+                            <table>
+                                
+                                <tr><td valign="top"><strong>School: </strong></td><td>
+                                    
+                                    Krieger School of Arts and Sciences
+                                    <input type="image" name="ctl00$content$rptCurrentCriteria$ctl00$rptCurrentCriteriaFilters$ctl00$ibRemoveCriteria" id="ctl00_content_rptCurrentCriteria_ctl00_rptCurrentCriteriaFilters_ctl00_ibRemoveCriteria" src="images/redX.gif" alt="Remove Criteria" border="0" /><br/>
+                                    
+                                    Whiting School of Engineering
+                                    <input type="image" name="ctl00$content$rptCurrentCriteria$ctl00$rptCurrentCriteriaFilters$ctl01$ibRemoveCriteria" id="ctl00_content_rptCurrentCriteria_ctl00_rptCurrentCriteriaFilters_ctl01_ibRemoveCriteria" src="images/redX.gif" alt="Remove Criteria" border="0" /><br/>
+                                    
+                                </td></tr>
+                                
+                                <tr><td valign="top"><strong>Term: </strong></td><td>
+                                    
+                                    Fall 2014
+                                    <input type="image" name="ctl00$content$rptCurrentCriteria$ctl01$rptCurrentCriteriaFilters$ctl00$ibRemoveCriteria" id="ctl00_content_rptCurrentCriteria_ctl01_rptCurrentCriteriaFilters_ctl00_ibRemoveCriteria" src="images/redX.gif" alt="Remove Criteria" border="0" /><br/>
+                                    
+                                </td></tr>
+                                
+                                <tr><td valign="top"><strong>Course Number: </strong></td><td>
+                                    
+                                    EN.510.312
+                                    <input type="image" name="ctl00$content$rptCurrentCriteria$ctl02$rptCurrentCriteriaFilters$ctl00$ibRemoveCriteria" id="ctl00_content_rptCurrentCriteria_ctl02_rptCurrentCriteriaFilters_ctl00_ibRemoveCriteria" src="images/redX.gif" alt="Remove Criteria" border="0" /><br/>
+                                    
+                                </td></tr>
+                                
+                            </table>
+                            <br/>
+                            
+                        </td>
+                        <td valign="top" >
+                            <div id="ctl00_content_pnlResults">
+                                
+                                <table width="100%">
+                                    <tr>
+                                        <td>
+                                            
+                                            <div align="right">
+                                                
+                                                sort by
+                                                <select name="ctl00$content$ddlSortBy" id="ctl00_content_ddlSortBy">
+                                                    <option value="School">School</option>
+                                                    <option selected="selected" value="CourseNumber">Class #</option>
+                                                    <option value="Term">Term</option>
+                                                    <option value="Location">Location</option>
+                                                    <option value="Instructor">Instructor</option>
+                                                    <option value="Status">Status</option>
+                                                    <option value="DayTime">Day/Time</option>
+                                                    
+                                                </select>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                
+                                                <select name="ctl00$content$ddlResultsPerPage" id="ctl00_content_ddlResultsPerPage">
+                                                    <option value="15">15</option>
+                                                    <option selected="selected" value="30">30</option>
+                                                    <option value="45">45</option>
+                                                    <option value="60">60</option>
+                                                    <option value="75">75</option>
+                                                    <option value="100">100</option>
+                                                    
+                                                </select>
+                                                per page
+                                                
+                                                
+                                                
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="right">
+                                                <a id="ctl00_content_lbShowHideDetails" href="javascript:__doPostBack('ctl00$content$lbShowHideDetails','')">[Collapse All]</a>&nbsp;&nbsp;&nbsp;
+                                                
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top">
+                                            
+                                            
+                                            <table width="100%" border="0" id="results">
+                                                <tr class="header">
+                                                    
+                                                    <td style="width:100px">Class #</td>
+                                                    <td>Title</td>
+                                                    <td>Term</td>
+                                                    <td nowrap="nowrap">Location</td>
+                                                    <td>Day-Times</td>
+                                                    <td>Instructor(s)</td>
+                                                    <td>Status</td>
+                                                </tr>
+                                                
+                                                <tr class="even">
+                                                    
+                                                    <td style="width:100px">EN.510.312 (01)</td>
+                                                    <td class="icon-none-16-right">
+                                                        
+                                                        Thermodynamics/Materials
+                                                        
+                                                    </td>
+                                                    <td>Fall 2014</td>
+                                                    <td>Homewood Campus</td>
+                                                    <td>MWF 12:00PM - 12:50PM</td>
+                                                    <td>
+                                                        
+                                                        <span>M. Herrera-Alonso</span>
+                                                    </td>
+                                                    <td>Open</td>
+                                                </tr>
+                                                <tr style="display:none;"></tr>
+                                                <tr style="display:none;" class="facultyDetails"></tr>
+                                                
+                                                <tr style="">
+                                                    <td colspan="7"><div style="border-bottom:solid 1px black;">
+                                                        <div id="classdetailstext">
+                                                            <table border="0">
+                                                                <tr>
+                                                                    <td style="padding-right:40px"><strong><em>Level</em></strong><br /><span id="ctl00_content_rptResults_ctl01_sectionDetails_lblLevel">Upper Level Undergraduate</span></td>
+                                                                    
+                                                                    <td style="padding-right:40px"><strong><em>Area</em></strong><br /><span id="ctl00_content_rptResults_ctl01_sectionDetails_lblAreas">EN</span></td>
+                                                                    
+                                                                    
+                                                                    <td style="padding-right:40px"><strong><em>Credits</em></strong><br /><span id="ctl00_content_rptResults_ctl01_sectionDetails_lblCredits">3.00</span></td>
+                                                                    <td style="padding-right:40px"><strong><em>Department</em></strong><br /><span id="ctl00_content_rptResults_ctl01_sectionDetails_lblDepartments">EN Materials Science & Engineering</span></td>
+                                                                        <td style="padding-right:40px"><strong><em>Enrollment Limit</em></strong><br /><span id="ctl00_content_rptResults_ctl01_sectionDetails_lblLimit">45</span></td>
+                                                                        </tr>
+                                                                        </table>
+                                                                        <strong><em>Description</em></strong><br/>
+                                                                        <span id="ctl00_content_rptResults_ctl01_sectionDetails_lblDescription">Second of the Introduction to Materials Science series, this course examines the principles of thermodynamics as they apply to materials. Topics include fundamental principles of thermodynamics, equilibrium in homogeneous and heterogeneous systems, thermodynamics of multicomponent systems, phase diagrams, thermodynamics of defects, and elementary statistical thermodynamics.</span>
+                                                                        <br />
+                                                                        <span>
+                                                                        <a id="ctl00_content_rptResults_ctl01_sectionDetails_linkTextBookInfo" onclick="showTextbookPopup(this, '425754');return false;" href="#">Textbook Info [+]</a>
+                                                                    </span>
+                                                                    <div id="ctl00_content_rptResults_ctl01_sectionDetails_textBookInfoDiv" style="width: 500px; display: none;" class="textBookInfo_425754"></div>
+                                                                    
+                                                                    <br/>
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    <strong><em>Schedule</em></strong><br/>
+                                                                    08-28-2014 to 12-05-2014 | MWF
+                                                                    12:00 PM - 12:50 PM | Homewood Campus<br/><br />
+                                                                    
+                                                                    <strong><em>Pre-Requisites</em></strong><br/>
+                                                                    
+                                                                    ( <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'AS.110.106');return false;">AS.110.106<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> AND <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'AS.110.107');return false;">AS.110.107<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> OR <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'AS.110.108');return false;">AS.110.108<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> AND <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'AS.110.108');return false;">AS.110.108<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder>) AND ( <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'EN.510.101');return false;">EN.510.101<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> OR <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'AS.030.101');return false;">AS.030.101<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> AND <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'AS.030.102');return false;">AS.030.102<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> ) AND ( <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'AS.171.101');return false;">AS.171.101<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> AND <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'AS.171.102');return false;">AS.171.102<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> OR <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'AS.171.103');return false;">AS.171.103<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> AND <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'AS.171.104');return false;">AS.171.104<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> ) AND <a href="#" class="linkPrereq_425754" onclick="showPrereqDetails(this, 'EN.510.202');return false;">EN.510.202<asp:PlaceHolder runat="server" ID="phPrereqLinkEnd">[+]</a></asp:PlaceHolder> or another programming course; or permission of instructor.
+                                                                    
+                                                                    <div ID="divPrereq_AS.110.106" style="display:none;"><strong>AS.110.106 Calculus I</strong><br/>Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, introduction to differential equations, functions of several variables, linear systems, applications for systems of linear differential equations, probability distributions. Many applications to the biological and social sciences will be discussed.</div>
+                                                                    <div ID="divPrereq_AS.110.107" style="display:none;"><strong>AS.110.107 Calculus II (For Biological and Social Science)</strong><br/>Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, introduction to differential equations, functions of several variables, linear systems, and applications for systems of linear differential equations, probability distributions.</div>
+                                                                    <div ID="divPrereq_AS.110.108" style="display:none;"><strong>AS.110.108 Calculus I</strong><br/>Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, polar coordinates, parametric equations, Taylor's theorem and applications, infinite sequences and series.Calculus I</strong><br/>Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, polar coordinates, parametric equations, Taylor's theorem and applications, infinite sequences and series.</div>
+                                                                    <div ID="divPrereq_AS.110.108" style="display:none;"><strong>AS.110.108 Calculus I</strong><br/>Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, polar coordinates, parametric equations, Taylor's theorem and applications, infinite sequences and series.Calculus I</strong><br/>Differential and integral calculus. Includes analytic geometry, functions, limits, integrals and derivatives, polar coordinates, parametric equations, Taylor's theorem and applications, infinite sequences and series.</div>
+                                                                    <div ID="divPrereq_EN.510.101" style="display:none;"><strong>EN.510.101 Introduction to Materials Chemistry</strong><br/>Basic principles of chemistry and how they apply to the behavior of materials in the solid state. The relationship between electronic structure, chemical bonding, and crystal structure is developed. Attention is given to characterization of atomic and molecular arrangements in crystalline and amorphous solids: metals, ceramics, semiconductors, and polymers (including proteins). Examples are drawn from industrial practice (including the environmental impact of chemical processes), from energy generation and storage (such as batteries and fuel cells), and from emerging technologies (such as biomaterials).  Students may receive credit for AS.030.103 or EN.510.101, but not both.</div>
+                                                                    <div ID="divPrereq_AS.030.101" style="display:none;"><strong>AS.030.101 Introductory Chemistry I</strong><br/>An introduction to the fundamental principles of chemistry. The main topics to be covered are atomic and molecular structure at the level of dot structures and VSEPR geometries, the periodic table, stoichiometry and the balancing of chemical equations, the gas laws, the law of mass action and chemical equilibrium, acids and bases, and elementary chemical thermodynamics. Switching sectons requires instructor's approval. Corequisite: AS.030.105</div>
+                                                                    <div ID="divPrereq_AS.030.102" style="display:none;"><strong>AS.030.102 Introductory Chemistry II</strong><br/>Continuation of AS.030.101 emphasizing chemical kinetics, chemical bonding.  Topics:  energy levels and wavefunctions for particle-in-a-box and hydrogen atom and approximate wavefunctions for molecules including introduction to hybrid orbitals.
+                                                                        Note: Appropriate adjusting caps should be used – to ensure both sections are approximately the same size</div>
+                                                                    <div ID="divPrereq_AS.171.101" style="display:none;"><strong>AS.171.101 General Physics:Physical Science Major I</strong><br/>One-year course in general physics covering mechanics, heat, sound, electricity and magnetism, optics, and modern physics.Midterm exams for every section are given during the 8 AM section time! Accordingly, students registering for sections at times other than 8 AM must retain availability for 8 AM sections as needed. Recommended Corequisites (AS.173.111) AND (AS.110.106 or AS.110.108 or AS.110.113)</div>
+                                                                    <div ID="divPrereq_AS.171.102" style="display:none;"><strong>AS.171.102 General Physics: Physical Science Major II</strong><br/>One-year course in general physics covering mechanics, heat, sound, electricity and magnetism, optics, and modern physics.Midterm exams for every section are given during the 8 AM section time! Accordingly, students registering for sections at times other than 8 AM must retain availability for 8 AM sections as needed. Recommended Corequisite: Calculus (AS.110.107 or AS.110.109 or AS.110.113)</div>
+                                                                    <div ID="divPrereq_AS.171.103" style="display:none;"><strong>AS.171.103 General Physics I for Biological Science Majors</strong><br/>Standard calculus based physics tailored to students majoring in one of the biological sciences. Topics in modern physics and in fluid dynamics will be covered in this course.
+                                                                            Recommended Corequisites:(AS.173.111) AND (AS.110.106 or AS.110.108 or AS.110.113)
+                                                                            Midterm exams for every section are given during the 8 AM section time! Accordingly, students registering for sections at times other than 8 AM must retain availability for 8 AM sections as needed.</div>
+                                                                    <div ID="divPrereq_AS.171.104" style="display:none;"><strong>AS.171.104 General Physics/Biology Majors II</strong><br/>This two-semester sequence is designed to present a standard calculus-based physics preparation tailored to students majoring in one of the biological sciences. Topics in electricity & magnetism, optics, and modern physics will be covered in this semester. Midterm exams for every section are given during the 8 AM section time!  Accordingly, students registering for sections at times other than 8 AM must retain availability for 8 AM sections as needed.  Recommended Course Background: C- or better in AS.171.101 or AS.171.103; Corequisite: AS.110.109, AS 173.112.</div>
+                                                                    <div ID="divPrereq_EN.510.202" style="display:none;"><strong>EN.510.202 Computation and Programming for Materials Scientists and Engineers</strong><br/>This course will introduce students to the basics of programming in the MATLAB environment.  Students will build skills in algorithmic problem solving by programming assignments regarding a range of biological and non-biological materials systems.  Students will learn to write function definitions and deploy basic operations of selection and iteration as well as MATLAB specific vectorization methods and the construction of graphical user interfaces. Applications may include materials structure, phase equilibrium, propagating reactions, and other relevant scientific and engineering applications.</div><br/>
+                                                                        <br />
+                                                                        
+                                                                        
+                                                                        
+                                                        </div></div></td>
+                                                </tr>
+                                                
+                                                
+                                                
+                                            </table>
+                                            
+                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="right">
+                                                
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;
+                                            
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div>
+                                    <em>Please note that the class sections displayed are for planning purposes only, and information such as dates, times, locations, and instructors are subject to change.</em>
+                                </div>
+                                
+                            </div>
+                            
+                        </td>
+                    </tr>
+                </table>
+                
+            </div>
+        </form>
+        
+        <footer>
+            <p style="text-align: center">These information services are provided by Johns Hopkins to assist in
+            accomplishing its business and mission. The accuracy and integrity of the data
+            being recorded by this means is of vital importance for institutional systems.
+            Any student who violates this policy by entering false data, by disclosing
+            security access such as passwords, or by deliberately attempting to misuse
+            university (corporate) information system resources shall be subject to
+            disciplinary action.</p>
+            <div style="text-align: center">Copyright &copy; 2005-2014</div>
+            <div style="text-align: center">The Johns Hopkins University. All rights reserved.</div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title> BME CLASS SEARCH </title>
+        <script type = "text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type = "text/javascript">
+            function mysubmit(index){
+                focusA = document.getElementById('focusA').value;
+				term = document.getElementById('term').value;
+                if (focusA != "")
+                window.location.assign("http://classsearch.bme.jhu.edu/"+term+"/"+ focusA);
+            }
+        </script>
+        <script>
+            function run(){
+                $(".clickable").click(function() {
+                                      $(this).next().children("td").toggle();
+                                      });
+                                      $(".collapsable").dblclick(function(){
+                                                                 $(this).toggle();
+                                                                 });
+            }
+        </script>
+        <style>
+            .even {background-color: LightGray;}
+            #results {align:center;}
+            </style>
+    </head>
+    <body onload="run();">
+        <br>
+        <h2 align="center"> BME CLASS SEARCH </h2>
+        <h3 align="center"> Pick your focus area </h3>
+        <form align ="center" onclick = "return mysubmit();">
+            <select id="term">
+				<option value="Fall 2015"> Fall 2015 </option>
+                <option value="Spring 2015"> Spring 2015 </option>
+				<option value="Fall 2014"> Fall 2014 </option>
+            </select>
+            <select id="focusA" onclick="if ((this.selectedIndex) != 'undefined') mysubmit(this.selectedIndex)">
+                <option value=""></option>
+                <option value="instrumentation"> Instrumentation </option>
+                <option value="systems"> Systems </option>
+                <option value="computational"> Computational </option>
+                <option value="imaging"> Imaging </option>
+                <option value="celltissue"> Cell and Tissue </option>
+            </select>
+        </form>
+        
+        <div>
+			<p><b>Click on class headline for description</b></p>
+			<p><b>Double click on class section info to close it</b></p>
+            <p>developed by Mutasem Al Dmour '16</p>
+        </div>
+    </body>
+</html>

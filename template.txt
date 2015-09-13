@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <title> BME CLASS SEARCH </title>
+        <script type = "text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type = "text/javascript">
+            function mysubmit(index){
+                focusA = document.getElementById('focusA').value;
+				term = document.getElementById('term').value;
+				host = "${host}"
+                if (focusA != "")
+                    window.location.assign(host + term +"/"+ focusA+".html");
+            }
+        </script>
+        <script>
+            function run(){
+            $(".clickable").click(function() {
+                $(this).next().children("td").toggle();
+            });
+            $(".collapsable").dblclick(function(){
+                $(this).toggle();
+            });
+            }
+        </script>
+        <style>
+            .even {background-color: LightGray;}
+            #results {align:center;}
+        </style>
+    </head>
+    <body onload="run();">
+            <div>
+            <br>
+            <h2 align="center"> BME CLASS SEARCH </h2>
+            <h3 align="center"> ${Term} - ${FocusArea} </h3>
+            <h3 align="center"> Last updated: ${time}</h3>
+            <form align ="center" onclick = "return mysubmit();">
+                <select id="term">
+					<option value="Spring 2015">Spring 2015 </option>
+					<option value="Fall 2014">Fall 2014</option>
+                </select>
+                <select id="focusA" onclick="if ((this.selectedIndex) != 'undefined') mysubmit(this.selectedIndex)">
+                    <option value=""></option>
+                    <option value="instrumentation"> Instrumentation </option>
+                    <option value="systems"> Systems </option>
+                    <option value="computational"> Computational </option>
+                    <option value="imaging"> Imaging </option>
+                    <option value="celltissue"> Cell and Tissue </option>
+                </select>
+            </form>
+            </div>
+            <div>
+            <table width="90%" id="results" align="center">
+                <tbody>
+                <tr>
+                            <td><b>Class Number: Title</b></td>
+                            <td><b>Day-Times</b></td>
+                            <td><b>Status</b></td>
+                </tr>
+                <tr>
+                    <td colspan=3>
+                    <div style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;"></div>
+                    </td>
+                </tr>
+				<tr  tal:repeat="section all">
+                <tr tal:define="pos repeat.section.even" tal:attributes="class string:$pos clickable">
+	                    <td width="50%">${section.classNumber}	${ section.name }</td>
+	                    <td width="35%">${section.times}</td>
+	                    <td>${section.status}</td>
+                </tr>
+                <tr>
+                    <td style="display:none" colspan="3" class="collapsable">
+                        <div   style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Level</b></td>
+                                        <td><b>Instructor</b></td>
+                                        <td><b>Area</b></td>
+                                        <td><b>Credits</b></td>
+                                        <td><b>Department</b></td>
+                                        <td><b>Location</b></td>
+										<td><b>Enrollment Limit </b><td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>${section.level}</td>
+                                        <td>${section.instructor}</td>
+                                        <td>${section.area}</td>
+                                        <td>${section.credits}</td>
+                                        <td>${section.department}</td>
+                                        <td>${section.location}</td>
+										<td>${section.enrollmentLimit}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"> <b>Description:</b> <br>${section.description} </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7" tal:content="structure section.rest"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+			</tr>
+			</tbody>
+        </table>
+        </div>
+    </body>
+</html>
